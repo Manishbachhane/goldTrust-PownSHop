@@ -7,10 +7,4 @@ const router=express.Router();
 
 router.post("/save",CategoryController.save);
 
-router.get("/fetch",CategoryController.fetch);
-
-router.delete("/delete",CategoryController.deleteUser);
-
-router.patch("/update",CategoryController.update);
-
 export default router;

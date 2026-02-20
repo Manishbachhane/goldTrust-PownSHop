@@ -15,8 +15,8 @@ export const save=async(req,res)=>{
   await UserSchemaModel.create(userDetails);
   res.status(201).json({"status":true});  
  }
- catch {
-  res.status(500).json({"status":false});   
+ catch(err) {
+  res.status(500).json({"status":false,"error":err.message});   
  }
 };
 

@@ -1,6 +1,6 @@
 import "../models/connection.js";
-// import jwt from "jsonwebtoken"; 
-// import rs from "randomstring";
+import jwt from "jsonwebtoken"; 
+import rs from "randomstring";
 
 //to link users model
 import UserSchemaModel from "../models/user.model.js";
@@ -20,19 +20,21 @@ export const save=async(req,res)=>{
  }
 };
 
-// export const login=async(req,res)=>{
-//  const userDetails={...req.body,"status":1};    
-//  const users=await UserSchemaModel.find(userDetails);
-//  if(users.length>0)
-//  {
-//   const payload=users[0].email;
-//   const key=rs.generate(20);
-//   const token=jwt.sign(payload,key);
-//   res.status(200).json({"status":true,"token":token,"info":users[0]});      
-//  }
-//  else
-//   res.status(404).json({"status":false});       
-// };
+export const login=async(req,res)=>{
+  console.log('hello');
+ const userDetails={...req.body,"status":1};    
+ const users=await UserSchemaModel.find(userDetails);
+ console.log(users);
+ if(users.length>0)
+ {
+  const payload=users[0].email;
+  const key=rs.generate(20);
+  const token=jwt.sign(payload,key);
+  res.status(200).json({"status":true,"token":token,"info":users[0]});      
+ }
+ else
+  res.status(404).json({"status":false});       
+};
 
 // export const fetch=async(req,res)=>{
 //   var condition_obj=req.query.condition_obj;

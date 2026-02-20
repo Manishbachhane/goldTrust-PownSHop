@@ -3,11 +3,11 @@ import express from 'express';
 //to link controller
 import * as UserController from '../controller/user.controller.js';
 
-const router=express.Router();
+const router = express.Router();
 
-router.post("/save",UserController.save);
+router.post("/save", UserController.save);
 
-// router.post("/login",UserController.login);
+router.post("/login", UserController.login);
 
 // router.get("/fetch",UserController.fetch);
 

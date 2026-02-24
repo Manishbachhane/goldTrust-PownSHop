@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-// import goldTrust from './goldTrust.png';
-import Nav from './components/Navbar';
-// import Hero from './components/Hero';
+
+import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Main from './components/Main';
 import About from './components/About';
@@ -9,8 +8,7 @@ import Contact from './components/Contact';
 import Service from './components/Service';
 import Register from './components/Register';
 import Login from './components/Login';
-// import Header from './components/HeaderComponent/Header';
-// import Sidebar from './components/SidebarComponent/Sidebar';
+// import Admin from './components/Admin'
 
 function App() {
   return (
@@ -25,6 +23,7 @@ function App() {
         <Route path='/service' element={<Service />} ></Route>
         <Route path='/register' element={<Register />} ></Route>
         <Route path='/login' element={<Login />} ></Route>
+    
       </Routes>
 
       <Footer />

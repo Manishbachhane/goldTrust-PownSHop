@@ -1,9 +1,8 @@
-import { useState } from 'react';
-import axios from 'axios';
-import { __userapiurl } from '../API_URL';
+import { useState } from "react";
+import axios from "axios";
+import { __userapiurl } from "../API_URL";
 
 function Register() {
-
   const [output, setOutput] = useState();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -14,9 +13,18 @@ function Register() {
   const [gender, setGender] = useState("");
 
   const handleSubmit = () => {
-    const userDetails = { name, email, password, mobile, address, city, gender };
+    const userDetails = {
+      name,
+      email,
+      password,
+      mobile,
+      address,
+      city,
+      gender,
+    };
 
-    axios.post(__userapiurl + "save", userDetails)
+    axios
+      .post(__userapiurl + "save", userDetails)
       .then(() => {
         setOutput("User register successfully....");
         setName("");
@@ -34,9 +42,7 @@ function Register() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-500 to-yellow-200 flex items-center justify-center p-6 pt-20">
-      
       <div className="bg-white shadow-2xl rounded-2xl w-full max-w-2xl p-8">
-
         <h2 className="text-3xl font-bold text-center text-yellow-800 mb-4">
           Register Here !!!
         </h2>
@@ -48,7 +54,6 @@ function Register() {
         )}
 
         <form className="space-y-5 bg-black text-white rounded-xl p-8 shadow-lg">
-
           {/* Name */}
           <div>
             <label className="block mb-1 font-semibold">Name</label>
@@ -159,7 +164,6 @@ function Register() {
               Submit
             </button>
           </div>
-
         </form>
       </div>
     </div>

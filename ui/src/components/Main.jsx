@@ -49,9 +49,13 @@ function Main() {
       
         className="text-4xl md:text-6xl font-bold mb-6 text-yellow-400"
       >
-        Welcome to  GoldTrust 
+        Welcome to 
       </h2>
+      
+       <div>
+         {/* <img src="./assets/gold.png" alt="Gold Icon" className="ml-2 inline-block w-10 h-56  w-56" /> */}
     <img src='./assets/pownShop.png' alt="Pawn Logo" className="h-56 inline-block mb-4 ml-2" /> 
+       </div>
       </div>
       <p
         ref={paraRef}

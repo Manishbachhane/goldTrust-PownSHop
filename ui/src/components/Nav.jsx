@@ -42,7 +42,7 @@ function Nav() {
                     `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
                   }
                 >
-                  Admin
+                  Admin-Home
                 </NavLink>
 
                 <NavLink
@@ -51,7 +51,7 @@ function Nav() {
                     `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
                   }
                 >
-                  manageusers
+                  Manageusers
                 </NavLink>
                 <NavLink
                   to="/logout"

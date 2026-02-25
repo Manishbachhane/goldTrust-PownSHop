@@ -64,3 +64,21 @@ export var deleteUser=async(req,res)=>{
     res.status(500).json({"status":false});        
   };
 };
+
+
+export var update=async(req,res)=>{
+  try{
+    let userDetails = await UserSchemaModel.findOne(req.body.condition_obj);
+    if(userDetails){
+      let user=await UserSchemaModel.updateMany(req.body.condition_obj,{$set:req.body.content_obj});   
+      if(user)
+        res.status(200).json({"status":true});
+      else
+        res.status(500).json({"status": false});
+    }
+    else
+      res.status(404).json({"status":"Requested resource not available"});
+  }catch(error){
+    res.status(500).json({"status":false});        
+  };
+};

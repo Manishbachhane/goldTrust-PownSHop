@@ -1,10 +1,10 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+// import React from "react";
+// import { NavLink } from "react-router-dom";
 
 function UserHome() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white pt-20">
-      {/* Hero Section */}
+   
       <div className="text-center py-16 px-6">
         <h1 className="text-4xl md:text-5xl font-bold text-yellow-400 mb-6">
           Welcome to GoldTrust Pawn

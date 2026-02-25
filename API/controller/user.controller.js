@@ -38,7 +38,7 @@ export const login = async (req, res) => {
 export const fetch = async (req, res) => {
 
   var condition_obj = req.query;
-
+  console.log(condition_obj);
 
   var userList = await UserSchemaModel.find(condition_obj);
   if (userList.length != 0)

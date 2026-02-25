@@ -11,7 +11,7 @@ router.post("/login", UserController.login);
 
 router.get("/fetch",UserController.fetch);
 
-// router.delete("/delete",UserController.deleteUser);
+router.delete("/delete",UserController.deleteUser);
 
 // router.patch("/update",UserController.update);
 

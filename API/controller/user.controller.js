@@ -46,3 +46,21 @@ export const fetch = async (req, res) => {
   else
     res.status(404).json({ "status": false });
 };
+
+
+export var deleteUser=async(req,res)=>{
+  try{
+    let userDetails = await UserSchemaModel.findOne(req.body);
+    if(userDetails){
+      let user=await UserSchemaModel.deleteOne(req.body);   
+      if(user)
+        res.status(200).json({"status":true});
+      else
+        res.status(500).json({"status": false});
+    }
+    else
+      res.status(404).json({"status":"Requested resource not available"});
+  }catch(error){
+    res.status(500).json({"status":false});        
+  };
+};

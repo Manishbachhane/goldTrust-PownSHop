@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Main from './components/Main';
@@ -12,6 +11,7 @@ import Logout from './components/Logout';
 import Admin from './components/Admin'
 import User from './components/User';
 import Manageusers from './components/Manageusers';
+import UserProfile from './components/UserProfile';
 function App() {
   return (
     <div>
@@ -27,6 +27,7 @@ function App() {
         <Route path='/admin' element={<Admin />} ></Route>
         <Route path='/user' element={<User />} ></Route>
         <Route path='/manageusers' element={   <Manageusers/>} ></Route>
+        <Route path="/userprofile" element={<UserProfile/>}></Route>
       </Routes>
       <Footer />
    

@@ -1,10 +1,9 @@
-// import React from "react";
-// import { NavLink } from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 function UserHome() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white pt-20">
-   
       <div className="text-center py-16 px-6">
         <h1 className="text-4xl md:text-5xl font-bold text-yellow-400 mb-6">
           Welcome to GoldTrust Pawn
@@ -18,7 +17,7 @@ function UserHome() {
       {/* Action Cards */}
       <div className="grid md:grid-cols-3 gap-8 px-10 pb-20">
         {/* Add Item */}
-        {/* <div className="bg-gray-800 rounded-2xl shadow-lg p-8 hover:scale-105 transition duration-300">
+        <div className="bg-gray-800 rounded-2xl shadow-lg p-8 hover:scale-105 transition duration-300">
           <h2 className="text-2xl font-semibold text-yellow-400 mb-4">
             Add New Item
           </h2>
@@ -31,10 +30,9 @@ function UserHome() {
           >
             Submit Item
           </NavLink>
-        </div> */}
-
+        </div>
         {/* My Items */}
-        {/* <div className="bg-gray-800 rounded-2xl shadow-lg p-8 hover:scale-105 transition duration-300">
+        <div className="bg-gray-800 rounded-2xl shadow-lg p-8 hover:scale-105 transition duration-300">
           <h2 className="text-2xl font-semibold text-yellow-400 mb-4">
             My Items
           </h2>
@@ -47,10 +45,9 @@ function UserHome() {
           >
             View Items
           </NavLink>
-        </div> */}
-
+        </div>
         {/* Profile */}
-        {/* <div className="bg-gray-800 rounded-2xl shadow-lg p-8 hover:scale-105 transition duration-300">
+        <div className="bg-gray-800 rounded-2xl shadow-lg p-8 hover:scale-105 transition duration-300">
           <h2 className="text-2xl font-semibold text-yellow-400 mb-4">
             My Profile
           </h2>
@@ -58,12 +55,12 @@ function UserHome() {
             Manage your account details and security settings.
           </p>
           <NavLink
-            to="/profile"
+            to="/userprofile"
             className="bg-yellow-400 text-black px-6 py-2 rounded-lg font-semibold hover:bg-yellow-500 transition"
           >
             Go to Profile
           </NavLink>
-        </div> */}
+        </div>
       </div>
     </div>
   );

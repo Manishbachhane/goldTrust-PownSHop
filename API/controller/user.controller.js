@@ -10,7 +10,7 @@ export const save = async (req, res) => {
   const l = users.length;
   const _id = l == 0 ? 1 : users[l - 1]._id + 1;
   const userDetails = { ...req.body, "_id": _id, "role": "user", "status": 0, "info": Date() };
-  console.log(userDetails);
+  // console.log(userDetails);
   try {
     await UserSchemaModel.create(userDetails);
     res.status(201).json({ "status": true });
@@ -68,16 +68,16 @@ export var deleteUser=async(req,res)=>{
 
 export var update=async(req,res)=>{
   try{
-    let userDetails = await UserSchemaModel.findOne(req.body.condition_obj);
-    if(userDetails){
-      let user=await UserSchemaModel.updateMany(req.body.condition_obj,{$set:req.body.content_obj});   
+    console.log(req.body.condition_obj)
+    // let userDetails = await UserSchemaModel.findOne(req.body.condition_obj);
+    console.log(req.body.content_obj)
+      let user=await UserSchemaModel.updateOne(req.body.condition_obj,{$set:req.body.content_obj});   
+    console.log(user);
       if(user)
         res.status(200).json({"status":true});
       else
         res.status(500).json({"status": false});
-    }
-    else
-      res.status(404).json({"status":"Requested resource not available"});
+      // res.status(404).json({"status":"Requested resource not available"});
   }catch(error){
     res.status(500).json({"status":false});        
   };

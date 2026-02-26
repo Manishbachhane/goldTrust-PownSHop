@@ -11,7 +11,6 @@ function AdminHome() {
           Manage users, verify pawn items and control the platform.
         </p>
       </div>
-
       {/* Stats Section */}
       <div className="grid md:grid-cols-4 gap-6 mb-16">
         <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition">
@@ -19,20 +18,18 @@ function AdminHome() {
           <p className="text-3xl font-bold text-yellow-400 mt-2">120</p>
         </div>
 
-        <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition">
+        {/* <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition">
           <h2 className="text-gray-400">Pending Items</h2>
           <p className="text-3xl font-bold text-yellow-400 mt-2">15</p>
         </div>
-
         <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition">
           <h2 className="text-gray-400">Approved Items</h2>
           <p className="text-3xl font-bold text-yellow-400 mt-2">78</p>
         </div>
-
         <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition">
           <h2 className="text-gray-400">Rejected Items</h2>
           <p className="text-3xl font-bold text-red-400 mt-2">7</p>
-        </div>
+        </div>*/}
       </div>
 
       {/* Quick Actions */}
@@ -54,7 +51,7 @@ function AdminHome() {
         </div>
 
         {/* Verify Items */}
-        <div className="bg-gray-800 rounded-2xl p-8 shadow-lg hover:scale-105 transition">
+        {/* <div className="bg-gray-800 rounded-2xl p-8 shadow-lg hover:scale-105 transition">
           <h2 className="text-2xl font-semibold text-yellow-400 mb-4">
             Verify Pawn Items
           </h2>
@@ -67,10 +64,10 @@ function AdminHome() {
           >
             Verify Items
           </NavLink>
-        </div>
+        </div> */}
 
         {/* Reports */}
-        <div className="bg-gray-800 rounded-2xl p-8 shadow-lg hover:scale-105 transition">
+        {/* <div className="bg-gray-800 rounded-2xl p-8 shadow-lg hover:scale-105 transition">
           <h2 className="text-2xl font-semibold text-yellow-400 mb-4">
             Reports & Analytics
           </h2>
@@ -83,12 +80,7 @@ function AdminHome() {
           >
             View Reports
           </NavLink>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <div className="text-center py-6 border-t border-gray-700 text-gray-500 text-sm">
-        Admin Panel • GoldTrust Pawn Shop © {new Date().getFullYear()}
+        </div> */}
       </div>
     </div>
   );

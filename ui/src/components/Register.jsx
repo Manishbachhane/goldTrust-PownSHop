@@ -41,26 +41,33 @@ function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-500 to-yellow-200 flex items-center justify-center p-6 pt-20">
-      <div className="bg-white shadow-2xl rounded-2xl w-full max-w-2xl p-8">
-        <h2 className="text-3xl font-bold text-center text-yellow-800 mb-4">
-          Register Here !!!
-        </h2>
+    <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-gray-900 via-black to-gray-900 px-4 py-16">
+      <div className="w-full max-w-3xl bg-gray-800/70 backdrop-blur-lg border border-gray-700 rounded-3xl shadow-2xl p-10">
+        {/* Header */}
+        <div className="text-center mb-10">
+          <h2 className="text-4xl font-bold text-yellow-400 mt-4">
+            Create Account
+          </h2>
+          <p className="text-gray-100 mt-2">Register to get started</p>
+        </div>
 
+        {/* Message */}
         {output && (
-          <p className="text-center text-blue-600 font-semibold mb-4">
+          <p className="text-center mb-6 text-green-400 font-medium">
             {output}
           </p>
         )}
 
-        <form className="space-y-5 bg-black text-white rounded-xl p-8 shadow-lg">
+        <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Name */}
           <div>
-            <label className="block mb-1 font-semibold">Name</label>
+            <label className="block text-gray-300 mb-2 font-medium">
+              Full Name
+            </label>
             <input
               type="text"
               placeholder="Enter your name"
-              className="w-full p-3 rounded-md bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              className="w-full p-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-yellow-400 outline-none transition"
               onChange={e => setName(e.target.value)}
               value={name}
             />
@@ -68,11 +75,13 @@ function Register() {
 
           {/* Email */}
           <div>
-            <label className="block mb-1 font-semibold">Email</label>
+            <label className="block text-gray-300 mb-2 font-medium">
+              Email
+            </label>
             <input
               type="email"
               placeholder="Enter your email"
-              className="w-full p-3 rounded-md bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              className="w-full p-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-yellow-400 outline-none transition"
               onChange={e => setEmail(e.target.value)}
               value={email}
             />
@@ -80,11 +89,13 @@ function Register() {
 
           {/* Password */}
           <div>
-            <label className="block mb-1 font-semibold">Password</label>
+            <label className="block text-gray-300 mb-2 font-medium">
+              Password
+            </label>
             <input
               type="password"
               placeholder="Enter password"
-              className="w-full p-3 rounded-md bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              className="w-full p-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-yellow-400 outline-none transition"
               onChange={e => setPassword(e.target.value)}
               value={password}
             />
@@ -92,22 +103,27 @@ function Register() {
 
           {/* Mobile */}
           <div>
-            <label className="block mb-1 font-semibold">Mobile</label>
+            <label className="block text-gray-300 mb-2 font-medium">
+              Mobile
+            </label>
             <input
               type="text"
               placeholder="Enter mobile number"
-              className="w-full p-3 rounded-md bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              className="w-full p-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-yellow-400 outline-none transition"
               onChange={e => setMobile(e.target.value)}
               value={mobile}
             />
           </div>
 
           {/* Address */}
-          <div>
-            <label className="block mb-1 font-semibold">Address</label>
+          <div className="md:col-span-2">
+            <label className="block text-gray-300 mb-2 font-medium">
+              Address
+            </label>
             <textarea
+              rows="3"
               placeholder="Enter address"
-              className="w-full p-3 rounded-md bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              className="w-full p-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-yellow-400 outline-none transition"
               onChange={e => setAddress(e.target.value)}
               value={address}
             ></textarea>
@@ -115,9 +131,9 @@ function Register() {
 
           {/* City */}
           <div>
-            <label className="block mb-1 font-semibold">City</label>
+            <label className="block text-gray-300 mb-2 font-medium">City</label>
             <select
-              className="w-full p-3 rounded-md bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              className="w-full p-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-yellow-400 outline-none transition"
               onChange={e => setCity(e.target.value)}
               value={city}
             >
@@ -130,8 +146,10 @@ function Register() {
 
           {/* Gender */}
           <div>
-            <label className="block mb-2 font-semibold">Gender</label>
-            <div className="flex gap-6">
+            <label className="block text-gray-300 mb-2 font-medium">
+              Gender
+            </label>
+            <div className="flex gap-6 text-gray-300">
               <label className="flex items-center gap-2">
                 <input
                   type="radio"
@@ -155,16 +173,24 @@ function Register() {
           </div>
 
           {/* Button */}
-          <div className="text-center pt-4">
+          <div className="md:col-span-2 text-center pt-6">
             <button
               type="button"
               onClick={handleSubmit}
-              className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-8 py-3 rounded-lg transition duration-300 shadow-md hover:scale-105"
+              className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 rounded-2xl shadow-lg transition duration-300 hover:scale-105"
             >
-              Submit
+              Create Account
             </button>
           </div>
         </form>
+
+        {/* Footer */}
+        <div className="text-center mt-6 text-gray-400 text-sm">
+          Already have an account?
+          <span className="text-yellow-400 cursor-pointer hover:underline ml-1">
+            Login
+          </span>
+        </div>
       </div>
     </div>
   );

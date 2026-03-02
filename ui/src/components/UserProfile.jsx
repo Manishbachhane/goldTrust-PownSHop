@@ -1,122 +1,119 @@
 import { useState } from "react";
 import axios from "axios";
 import { __userapiurl } from "../API_URL";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Userprofile() {
-  const [output, setOutput] = useState();
+  const navigate = useNavigate();
+  const [output, setOutput] = useState("");
+
   const [name, setName] = useState(localStorage.getItem("name"));
-  const [email, setEmail] = useState(localStorage.getItem("email"));
-  const [password, setPassword] = useState(localStorage.getItem("password"));
+  const [email] = useState(localStorage.getItem("email")); // email not editable
+  const [password] = useState(localStorage.getItem("******")); //passwort not editable
   const [mobile, setMobile] = useState(localStorage.getItem("mobile"));
   const [address, setAddress] = useState(localStorage.getItem("address"));
   const [city, setCity] = useState(localStorage.getItem("city"));
   const [gender, setGender] = useState(localStorage.getItem("gender"));
 
-  const handleSubmit = () => {
+  const handleSubmit = async e => {
+    e.preventDefault();
+
     let data = {
       condition_obj: { email: email },
-      content_obj: { name, email, password, mobile, address, city, gender },
+      content_obj: { name, mobile, address, city, gender },
     };
-    axios
-      .patch(__userapiurl + "update", data)
-      .then(() => {
-        setOutput("User register successfully....");
-        <Navigate to="/login" />;
 
-        // setName("");
-        // setEmail("");
-        // setPassword("");
-        // setMobile("");
-        // setAddress("");
-        // setCity("");
-        // setGender("");
-      })
-      .catch(() => {
-        setOutput("User registration failed....");
-      });
+    try {
+      await axios.patch(__userapiurl + "update", data);
+      setOutput("Profile Updated Successfully ✅");
+      setTimeout(() => {
+        navigate("/login");
+      }, 1500);
+    } catch (err) {
+      setOutput("Profile Update Failed ❌");
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-500 to-yellow-200 flex items-center justify-center p-6 pt-20">
-      <div className="bg-white shadow-2xl rounded-2xl w-full max-w-2xl p-8">
-        <h2 className="text-3xl font-bold text-center text-yellow-800 mb-4">
-          Edit your Profile !!!
-        </h2>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex justify-center items-center px-4 py-20">
+      <div className="w-full max-w-4xl bg-gray-800/70 backdrop-blur-md border border-gray-700 rounded-3xl shadow-2xl p-10">
+        {/* Header */}
+        <div className="text-center mb-10">
+          <h2 className="text-4xl font-bold text-yellow-400 mt-4">
+            Edit Profile
+          </h2>
+          <p className="text-gray-400 mt-2">Update your personal details</p>
+        </div>
 
         {output && (
-          <p className="text-center text-blue-600 font-semibold mb-4">
+          <div className="text-center mb-6 font-semibold text-green-400">
             {output}
-          </p>
+          </div>
         )}
 
-        <form className="space-y-5 bg-black text-white rounded-xl p-8 shadow-lg">
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+        >
           {/* Name */}
           <div>
-            <label className="block mb-1 font-semibold">Name</label>
+            <label className="block mb-2 text-gray-300 font-medium">
+              Full Name
+            </label>
             <input
               type="text"
-              placeholder="Enter your name"
-              className="w-full p-3 rounded-md bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-              onChange={e => setName(e.target.value)}
+              className="w-full p-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-yellow-400 outline-none transition"
               value={name}
+              onChange={e => setName(e.target.value)}
             />
           </div>
-          <h1>{name}</h1>
+
           {/* Email */}
           <div>
-            <label className="block mb-1 font-semibold">Email</label>
+            <label className="block mb-2 text-gray-300 font-medium">
+              Email
+            </label>
             <input
               type="email"
-              placeholder="Enter your email"
-              className="w-full p-3 rounded-md bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-              onChange={e => setEmail(e.target.value)}
+              className="w-full p-3 bg-gray-700 border border-gray-600 rounded-xl text-gray-400 cursor-not-allowed"
               value={email}
+              disabled
             />
           </div>
 
           {/* Password */}
           <div>
-            <label className="block mb-1 font-semibold">Password</label>
+            <label className="block mb-2 text-gray-300 font-medium">
+              Password
+            </label>
             <input
               type="password"
-              placeholder="Enter password"
-              className="w-full p-3 rounded-md bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-              onChange={e => setPassword(e.target.value)}
-              value={password}
+              className="w-full p-3 bg-gray-700 border border-gray-600 rounded-xl text-gray-400 cursor-not-allowed"
+              value="*******"
+              disabled
             />
           </div>
 
           {/* Mobile */}
           <div>
-            <label className="block mb-1 font-semibold">Mobile</label>
+            <label className="block mb-2 text-gray-300 font-medium">
+              Mobile
+            </label>
             <input
               type="text"
-              placeholder="Enter mobile number"
-              className="w-full p-3 rounded-md bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-              onChange={e => setMobile(e.target.value)}
+              className="w-full p-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-yellow-400 outline-none transition"
               value={mobile}
+              onChange={e => setMobile(e.target.value)}
             />
-          </div>
-
-          {/* Address */}
-          <div>
-            <label className="block mb-1 font-semibold">Address</label>
-            <textarea
-              placeholder="Enter address"
-              className="w-full p-3 rounded-md bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-              onChange={e => setAddress(e.target.value)}
-              value={address}
-            ></textarea>
           </div>
 
           {/* City */}
           <div>
-            <label className="block mb-1 font-semibold">City</label>
+            <label className="block mb-2 text-gray-300 font-medium">City</label>
             <select
-              className="w-full p-3 rounded-md bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
-              onChange={e => setCity(e.target.value)}
+              className="w-full p-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-yellow-400 outline-none transition"
               value={city}
+              onChange={e => setCity(e.target.value)}
             >
               <option value="">Select City</option>
               <option>Indore</option>
@@ -127,8 +124,10 @@ function Userprofile() {
 
           {/* Gender */}
           <div>
-            <label className="block mb-2 font-semibold">Gender</label>
-            <div className="flex gap-6">
+            <label className="block mb-2 text-gray-300 font-medium">
+              Gender
+            </label>
+            <div className="flex gap-6 text-gray-300">
               <label className="flex items-center gap-2">
                 <input
                   type="radio"
@@ -151,14 +150,26 @@ function Userprofile() {
             </div>
           </div>
 
+          {/* Address */}
+          <div className="md:col-span-2">
+            <label className="block mb-2 text-gray-300 font-medium">
+              Address
+            </label>
+            <textarea
+              rows="3"
+              className="w-full p-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-yellow-400 outline-none transition"
+              value={address}
+              onChange={e => setAddress(e.target.value)}
+            ></textarea>
+          </div>
+
           {/* Button */}
-          <div className="text-center pt-4">
+          <div className="md:col-span-2 text-center pt-6">
             <button
-              type="button"
-              onClick={handleSubmit}
-              className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-8 py-3 rounded-lg transition duration-300 shadow-md hover:scale-105"
+              type="submit"
+              className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-12 py-3 rounded-2xl shadow-lg transition duration-300 hover:scale-105"
             >
-              Submit
+              Update Profile
             </button>
           </div>
         </form>

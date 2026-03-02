@@ -1,6 +1,7 @@
 import "../models/connection.js";
 import jwt from "jsonwebtoken";
 import rs from "randomstring";
+import sendMail from "./email.controller.js";
 
 //to link users model
 import UserSchemaModel from "../models/user.model.js";
@@ -13,6 +14,7 @@ export const save = async (req, res) => {
   // console.log(userDetails);
   try {
     await UserSchemaModel.create(userDetails);
+    sendMail(req.body.email,req.body.password);
     res.status(201).json({ "status": true });
   }
   catch (err) {

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 import { __userapiurl } from "../API_URL";
 
 function Register() {
@@ -188,7 +189,7 @@ function Register() {
         <div className="text-center mt-6 text-gray-400 text-sm">
           Already have an account?
           <span className="text-yellow-400 cursor-pointer hover:underline ml-1">
-            Login
+            <NavLink to="/login">Login</NavLink>
           </span>
         </div>
       </div>

@@ -23,7 +23,7 @@ export const save = async (req, res) => {
 };
 
 export const login = async (req, res) => {
-  console.log('hello');
+  // console.log('hello');
   const userDetails = { ...req.body, "status": 1 };
   const users = await UserSchemaModel.find(userDetails);
   console.log(users);

@@ -5,13 +5,13 @@ function sendMail(email,password)
  let transporter = nodemailer.createTransport({
    service: 'gmail',
    auth: {
-     user: 'vilekhofficial@gmail.com',
-     pass: 'olqxfaikwimxxkzu'
+     user: 'goldtrustpownshop@gmail.com',
+     pass: 'aopzbwljovmvency'
    }
  });
 
  let mailOptions = {
-   from: 'vilekhofficial@gmail.com',
+   from: 'goldtrustpownshop@gmail.com',
    to: email,
    subject: 'Verification Email PawnShop',
    html: "<h1>Welcome to pawnshop</h1><p>You have successfully register to our site</p><h2>your login credentials are attached below</h2><h4>Username : "+email+"</h4><h4>Password : "+password+"</h4><h2>Click on the link below to verify your account....</h2><a href='http://localhost:3000/vemail/"+email+"'>Click to verify account</a>"

@@ -1,190 +1,393 @@
 //isme user ke according nav bar me chnage hoga use state ki help se isme
 //tin nav hove user or admin or guest
 
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+// import gsap from "gsap";
+// import { useGSAP } from "@gsap/react";
+// import { NavLink } from "react-router-dom";
+// import { useState, useEffect } from "react";
+
+// function Nav() {
+//   //=============================================
+//   const [NavContent, setNavContent] = useState();
+
+//   useEffect(() => {
+//     setInterval(() => {
+//       if (
+//         localStorage.getItem("token") != undefined &&
+//         localStorage.getItem("role") == "admin"
+//       ) {
+//         setNavContent(
+//           <>
+//             {" "}
+//             <nav className="fixed z-50 w-full bg-black text-white p-4 flex justify-between items-center h-16 overflow-hidden px-24 ">
+
+//               <img
+//                 src="./assets/goldTrust.png"
+//                 className="w-24 ml-4 "
+//                 alt="img"
+//               />
+//               <div className="space-x-6">
+//                 <NavLink
+//                   to="/admin"
+//                   className={({ isActive }) =>
+//                     `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
+//                   }
+//                 >
+//                   Admin-Home
+//                 </NavLink>
+
+//                 <NavLink
+//                   to="/manageusers"
+//                   className={({ isActive }) =>
+//                     `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
+//                   }
+//                 >
+//                   Manageusers
+//                 </NavLink>
+//                 <NavLink
+//                   to="/logout"
+//                   className={({ isActive }) =>
+//                     `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
+//                   }
+//                 >
+//                   Logout
+//                 </NavLink>
+//               </div>
+//             </nav>
+//           </>,
+//         );
+//       } else if (
+//         localStorage.getItem("token") != undefined &&
+//         localStorage.getItem("role") == "user"
+//       ) {
+//         setNavContent(
+//           <>
+//             <nav className="fixed z-50 w-full bg-black text-white p-4 flex justify-between items-center h-16 overflow-hidden px-24 ">
+//               {/* <h1 className="text-2xl font-bold text-yellow-400">GoldTrust Pawn</h1>  */}
+//               <img
+//                 src="./assets/goldTrust.png"
+//                 className="w-24 ml-4 "
+//                 alt="img"
+//               />
+//               <div className="space-x-6">
+//                 <NavLink
+//                   to="/user"
+//                   className={({ isActive }) =>
+//                     `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
+//                   }
+//                 >
+//                   User-Home
+//                 </NavLink>
+
+//                 <NavLink
+//                   to="/logout"
+//                   className={({ isActive }) =>
+//                     `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
+//                   }
+//                 >
+//                   Logout
+//                 </NavLink>
+//               </div>
+//             </nav>
+//           </>,
+//         );
+//       } else {
+//         setNavContent(
+//           <>
+//             <nav className="fixed z-50 w-full bg-black text-white p-4 flex justify-between items-center h-16 overflow-hidden px-24 ">
+//               {/* <h1 className="text-2xl font-bold text-yellow-400">GoldTrust Pawn</h1>  */}
+//               <img
+//                 src="./assets/goldTrust.png"
+//                 className="w-24 ml-4 "
+//                 alt="img"
+//               />
+//               <div className="space-x-6">
+//                 <NavLink
+//                   to="/"
+//                   className={({ isActive }) =>
+//                     `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
+//                   }
+//                 >
+//                   Home
+//                 </NavLink>
+
+//                 <NavLink
+//                   to="/about"
+//                   className={({ isActive }) =>
+//                     `nav-content hover:text-yellow-400 hover:font-bold ${
+//                       isActive
+//                         ? "text-yellow-400 font-bold border-b-2 border-yellow-400"
+//                         : ""
+//                     }`
+//                   }
+//                 >
+//                   About-us
+//                 </NavLink>
+
+//                 <NavLink
+//                   to="/service"
+//                   className={({ isActive }) =>
+//                     `nav-content hover:text-yellow-400 hover:font-bold ${
+//                       isActive
+//                         ? "text-yellow-400 font-bold border-b-2 border-yellow-400"
+//                         : ""
+//                     }`
+//                   }
+//                 >
+//                   Service
+//                 </NavLink>
+
+//                 <NavLink
+//                   to="/contact"
+//                   className={({ isActive }) =>
+//                     `nav-content hover:text-yellow-400 hover:font-bold ${
+//                       isActive
+//                         ? "text-yellow-400 font-bold border-b-2 border-yellow-400"
+//                         : ""
+//                     }`
+//                   }
+//                 >
+//                   Contact
+//                 </NavLink>
+
+//                 <NavLink
+//                   to="/register"
+//                   className={({ isActive }) =>
+//                     `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
+//                   }
+//                 >
+//                   Register
+//                 </NavLink>
+
+//                 <NavLink
+//                   to="/login"
+//                   className={({ isActive }) =>
+//                     `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
+//                   }
+//                 >
+//                   Login
+//                 </NavLink>
+//               </div>
+//             </nav>
+//           </>,
+//         );
+//       }
+//     }, 1);
+//   }, []);
+
+//   return <>{NavContent}</>;
+// }
+
+// export default Nav;
+
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 function Nav() {
-  useGSAP(() => {
-    gsap.from(".nav-content", {
-      opacity: 0,
-      y: -100,
-      duration: 1,
-      stagger: 0.2,
-    });
-  });
-
-  //=============================================
-  const [NavContent, setNavContent] = useState();
+  const [role, setRole] = useState("guest");
 
   useEffect(() => {
     setInterval(() => {
-      if (
-        localStorage.getItem("token") != undefined &&
-        localStorage.getItem("role") == "admin"
-      ) {
-        setNavContent(
-          <>
-            {" "}
-            <nav className="fixed z-50 w-full bg-black text-white p-4 flex justify-between items-center h-16 overflow-hidden px-24 ">
-              {/* <h1 className="text-2xl font-bold text-yellow-400">GoldTrust Pawn</h1>  */}
-              <img
-                src="./assets/goldTrust.png"
-                className="w-24 ml-4 "
-                alt="img"
-              />
-              <div className="space-x-6">
-                <NavLink
-                  to="/admin"
-                  className={({ isActive }) =>
-                    `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
-                  }
-                >
-                  Admin-Home
-                </NavLink>
+      const token = localStorage.getItem("token");
+      const userRole = localStorage.getItem("role");
 
-                <NavLink
-                  to="/manageusers"
-                  className={({ isActive }) =>
-                    `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
-                  }
-                >
-                  Manageusers
-                </NavLink>
-                <NavLink
-                  to="/logout"
-                  className={({ isActive }) =>
-                    `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
-                  }
-                >
-                  Logout
-                </NavLink>
-              </div>
-            </nav>
-          </>,
-        );
-      } else if (
-        localStorage.getItem("token") != undefined &&
-        localStorage.getItem("role") == "user"
-      ) {
-        setNavContent(
-          <>
-            <nav className="fixed z-50 w-full bg-black text-white p-4 flex justify-between items-center h-16 overflow-hidden px-24 ">
-              {/* <h1 className="text-2xl font-bold text-yellow-400">GoldTrust Pawn</h1>  */}
-              <img
-                src="./assets/goldTrust.png"
-                className="w-24 ml-4 "
-                alt="img"
-              />
-              <div className="space-x-6">
-                <NavLink
-                  to="/user"
-                  className={({ isActive }) =>
-                    `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
-                  }
-                >
-                  User-Home
-                </NavLink>
-
-                <NavLink
-                  to="/logout"
-                  className={({ isActive }) =>
-                    `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
-                  }
-                >
-                  Logout
-                </NavLink>
-              </div>
-            </nav>
-          </>,
-        );
+      if (token && userRole === "admin") {
+        setRole("admin");
+      } else if (token && userRole === "user") {
+        setRole("user");
       } else {
-        setNavContent(
-          <>
-            <nav className="fixed z-50 w-full bg-black text-white p-4 flex justify-between items-center h-16 overflow-hidden px-24 ">
-              {/* <h1 className="text-2xl font-bold text-yellow-400">GoldTrust Pawn</h1>  */}
-              <img
-                src="./assets/goldTrust.png"
-                className="w-24 ml-4 "
-                alt="img"
-              />
-              <div className="space-x-6">
-                <NavLink
-                  to="/"
-                  className={({ isActive }) =>
-                    `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
-                  }
-                >
-                  Home
-                </NavLink>
-
-                <NavLink
-                  to="/about"
-                  className={({ isActive }) =>
-                    `nav-content hover:text-yellow-400 hover:font-bold ${
-                      isActive
-                        ? "text-yellow-400 font-bold border-b-2 border-yellow-400"
-                        : ""
-                    }`
-                  }
-                >
-                  About-us
-                </NavLink>
-
-                <NavLink
-                  to="/service"
-                  className={({ isActive }) =>
-                    `nav-content hover:text-yellow-400 hover:font-bold ${
-                      isActive
-                        ? "text-yellow-400 font-bold border-b-2 border-yellow-400"
-                        : ""
-                    }`
-                  }
-                >
-                  Service
-                </NavLink>
-
-                <NavLink
-                  to="/contact"
-                  className={({ isActive }) =>
-                    `nav-content hover:text-yellow-400 hover:font-bold ${
-                      isActive
-                        ? "text-yellow-400 font-bold border-b-2 border-yellow-400"
-                        : ""
-                    }`
-                  }
-                >
-                  Contact
-                </NavLink>
-
-                <NavLink
-                  to="/register"
-                  className={({ isActive }) =>
-                    `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
-                  }
-                >
-                  Register
-                </NavLink>
-
-                <NavLink
-                  to="/login"
-                  className={({ isActive }) =>
-                    `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
-                  }
-                >
-                  Login
-                </NavLink>
-              </div>
-            </nav>
-          </>,
-        );
+        setRole("guest");
       }
     }, 1);
   }, []);
 
-  return <>{NavContent}</>;
+  const profiledropdown = ( <div className="relative group">
+              <button
+                className={({ isActive }) =>
+                  `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
+                }
+              >
+                Profile<span className="text-lg">▾</span>
+              </button>
+
+              <div
+                className="absolute right-0 top-full mt-3 w-44   bg-gradient-to-br from-gray-900 via-black to-gray-900
+ text-white rounded-xl shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-700"
+              ><NavLink
+                  to="/profile"
+                  className={({ isActive }) =>
+                    `block rounded-lg hover:bg-yellow-400 px-4 py-2 text-sm hover:text-black ${
+                      isActive ? "bg-yellow-400 text-black font-semibold" : ""
+                    }`
+                  }
+                >
+                  View Profile
+                </NavLink>
+                <NavLink
+                  to="/editprofile"
+                  className={({ isActive }) =>
+                    `block rounded-lg hover:bg-yellow-400 px-4 py-2 text-sm hover:text-black ${
+                      isActive ? "bg-yellow-400 text-black font-semibold" : ""
+                    }`
+                  }
+                >
+                  Edit Profile
+                </NavLink>
+
+                <NavLink
+                  to="/changepassword"
+                  className={({ isActive }) =>
+                    `block rounded-lg hover:bg-yellow-400 px-4 py-2 text-sm hover:text-black ${
+                      isActive ? "bg-yellow-400 text-black font-semibold" : ""
+                    }`
+                  }
+                >
+                  Change Password
+                </NavLink>
+
+                <NavLink
+                  to="/logout"
+                  className={({ isActive }) =>
+                    `block rounded-lg hover:bg-red-400 px-4 py-2 text-sm hover:text-black`
+                  }
+                >
+                  Logout
+                </NavLink>
+              </div>
+            </div>);
+
+
+  return (
+    <nav className=" fixed z-50 w-full bg-black text-white p-4 flex justify-between items-center h-16 px-24 ">
+      <img
+        src="./assets/goldTrust.png"
+        className="w-24 ml-4 object-cover h-12"
+        alt="img"
+      />
+
+      {/* ================= NAV ITEMS ================= */}
+
+      <div className="space-x-6 flex items-center">
+        {/* ================= ADMIN NAV ================= */}
+
+        {role === "admin" && (
+          <>
+            <NavLink
+              to="/admin"
+              className={({ isActive }) =>
+                `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
+              }
+            >
+              Admin-Home
+            </NavLink>
+
+            <NavLink
+              to="/manageusers"
+              className={({ isActive }) =>
+                `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
+              }
+            >
+              ManageUsers
+            </NavLink>
+
+            {/* DROPDOWN */}
+
+              {profiledropdown}
+          </>
+        )}
+
+        {/* ================= USER NAV ================= */}
+        {role === "user" && (
+          <>
+            <NavLink
+              to="/user"
+              className={({ isActive }) =>
+                `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
+              }
+            >
+              User-Home
+            </NavLink>
+            {/* USER DROPDOWN */}
+
+              {profiledropdown}
+           
+          </>
+        )}
+        {/* ================= GUEST NAV ================= */}
+
+        {role === "guest" && (
+          <>
+            <div className="space-x-6">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
+                }
+              >
+                Home
+              </NavLink>
+
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  `nav-content hover:text-yellow-400 hover:font-bold ${
+                    isActive
+                      ? "text-yellow-400 font-bold border-b-2 border-yellow-400"
+                      : ""
+                  }`
+                }
+              >
+                About-us
+              </NavLink>
+              <NavLink
+                to="/service"
+                className={({ isActive }) =>
+                  `nav-content hover:text-yellow-400 hover:font-bold ${
+                    isActive
+                      ? "text-yellow-400 font-bold border-b-2 border-yellow-400"
+                      : ""
+                  }`
+                }
+              >
+                Service
+              </NavLink>
+
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  `nav-content hover:text-yellow-400 hover:font-bold ${
+                    isActive
+                      ? "text-yellow-400 font-bold border-b-2 border-yellow-400"
+                      : ""
+                  }`
+                }
+              >
+                Contact
+              </NavLink>
+
+              <NavLink
+                to="/register"
+                className={({ isActive }) =>
+                  `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
+                }
+              >
+                Register
+              </NavLink>
+
+              <NavLink
+                to="/login"
+                className={({ isActive }) =>
+                  `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
+                }
+              >
+                Login
+              </NavLink>
+            </div>
+          </>
+        )}
+      </div>
+    </nav>
+  );
 }
 
 export default Nav;

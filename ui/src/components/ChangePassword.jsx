@@ -61,9 +61,17 @@ function ChangePassword() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900">
-      <div className="bg-gray-800 p-10 text-white border border-gray-600 rounded-xl w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-6 text-center">Change Password</h1>
+    <div
+      className="min-h-screen flex items-center justify-center bg-gradient-to-b from-black  via-gray-900 to-black
+"
+    >
+      <div
+        className="bg-gradient-to-br from-gray-900 via-black to-gray-900
+ p-10 text-white border border-yellow-400 rounded-xl w-full max-w-md"
+      >
+        <h1 className="text-2xl text-yellow-400  font-bold mb-6 text-center">
+          Change Password
+        </h1>
         {output.value ? (
           <div className="text-center mb-6 font-semibold text-green-400">
             {output.msg}

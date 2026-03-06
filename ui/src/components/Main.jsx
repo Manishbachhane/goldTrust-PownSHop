@@ -23,9 +23,9 @@ function Main() {
           y: 90,
           opacity: 0,
           duration: 1,
-            ease: "back.out(1.7)",
+          ease: "back.out(1.7)",
         },
-        "-=0.5"
+        "-=0.5",
       )
       .from(
         btnRef.current,
@@ -35,27 +35,28 @@ function Main() {
           duration: 0.6,
           ease: "back.out(1.7)",
         },
-        "-=0.5"
+        "-=0.5",
       );
-
   }, []);
 
   return (
     <section
-      className="min-h-screen flex flex-col justify-center items-center text-center bg-black text-white px-6"
+      className="min-h-screen flex flex-col justify-center items-center text-center bg-gradient-to-b from-gray-950 via-black to-gray-900
+ text-white px-6"
     >
-      <div   ref={headingRef} className="flex h-24 items-center mb-2 ">
-            <h2
-      
-        className="text-4xl md:text-6xl font-bold mb-6 text-yellow-400"
-      >
-        Welcome to 
-      </h2>
-      
-       <div>
-         {/* <img src="./assets/gold.png" alt="Gold Icon" className="ml-2 inline-block w-10 h-56  w-56" /> */}
-    <img src='./assets/pownShop.png' alt="Pawn Logo" className="h-56 inline-block mb-4 ml-2" /> 
-       </div>
+      <div ref={headingRef} className="flex h-24 items-center mb-2 ">
+        <h2 className="text-4xl md:text-6xl font-bold mb-6 text-yellow-400">
+          Welcome to
+        </h2>
+
+        <div>
+          {/* <img src="./assets/gold.png" alt="Gold Icon" className="ml-2 inline-block w-10 h-56  w-56" /> */}
+          <img
+            src="./assets/pownShop.png"
+            alt="Pawn Logo"
+            className="h-56 inline-block mb-4 ml-2"
+          />
+        </div>
       </div>
       <p
         ref={paraRef}

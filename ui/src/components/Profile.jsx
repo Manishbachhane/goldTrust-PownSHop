@@ -1,5 +1,4 @@
-import { useState } from "react";
-import gsap from "gsap";
+import { NavLink } from "react-router-dom";
 
 function Profile() {
   const user = {
@@ -15,13 +14,13 @@ function Profile() {
   return (
     <div
       className="min-h-screen flex items-center justify-center 
-    bg-gradient-to-br from-gray-900 via-black to-gray-900 p-6"
+    bg-gradient-to-b from-black via-gray-900 to-black p-6"
     >
       <div
         className=" w-full max-w-lg 
-      bg-white/10 backdrop-blur-lg 
-      border border-yellow-500/20 
-      rounded-2xl shadow-2xl p-8"
+     bg-gradient-to-br from-gray-900 via-black to-gray-900
+      border border-yellow-500/100 
+      rounded-2xl shadow-5xl shadow-gray-800 p-8"
       >
         {/* Header */}
 
@@ -64,7 +63,7 @@ function Profile() {
             <span className="text-white">{user.city}</span>
           </div>
 
-           <div className="detail-row flex justify-between border-b border-gray-700 pb-2">
+          <div className="detail-row flex justify-between border-b border-gray-700 pb-2">
             <span className="text-gray-400">Gender</span>
             <span className="text-white">{user.gender}</span>
           </div>
@@ -79,11 +78,11 @@ function Profile() {
 
         <div className="flex gap-4 mt-7">
           <button className="flex-1 bg-yellow-500 text-black py-2 rounded-lg font-semibold hover:bg-yellow-600 transition">
-            Edit Profile
+            <NavLink to="/editprofile"> Edit Profile</NavLink>
           </button>
 
           <button className="flex-1 border border-yellow-500 text-yellow-400 py-2 rounded-lg hover:bg-yellow-500 hover:text-black transition">
-            Change Password
+            <NavLink to="/changepassword"> Change Password</NavLink>
           </button>
         </div>
       </div>

@@ -17,7 +17,7 @@ function ManageUsers() {
         console.log(error);
       });
   };
-
+    
   useEffect(() => {
     fetchUsers();
   }, []);

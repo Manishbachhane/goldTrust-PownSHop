@@ -14,6 +14,8 @@ import Manageusers from './components/Manageusers';
 import EditProfile from './components/EditProfile';
 import Verifyuser from './components/Verifyuser';
 import Profile from './components/Profile';
+import ChangePassword from './components/ChangePassword';
+
 function App() {
   return (
     <div>
@@ -29,10 +31,11 @@ function App() {
         <Route path='/logout' element={<Logout />} ></Route>
         <Route path='/admin' element={<Admin />} ></Route>
         <Route path='/user' element={<User />} ></Route>
-          <Route path='/profile' element={<Profile />} ></Route>
-          <Route path='/vemail/:email' element={<Verifyuser />} ></Route>
+        <Route path='/profile' element={<Profile />} ></Route>
+        <Route path='/vemail/:email' element={<Verifyuser />} ></Route>
         <Route path='/manageusers' element={   <Manageusers/>} ></Route>
         <Route path="/editprofile" element={<EditProfile/>}></Route>
+        <Route path="/changepassword" element={<ChangePassword/>}></Route>
       </Routes>
 
       <Footer />

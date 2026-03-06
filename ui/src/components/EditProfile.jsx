@@ -9,13 +9,13 @@ function Userprofile() {
 
   const [name, setName] = useState(localStorage.getItem("name"));
   const [email] = useState(localStorage.getItem("email")); // email not editable
-  const [password] = useState(localStorage.getItem("******")); //passwort not editable
+  const [password] = useState(localStorage.getItem("")); //  not editable
   const [mobile, setMobile] = useState(localStorage.getItem("mobile"));
   const [address, setAddress] = useState(localStorage.getItem("address"));
   const [city, setCity] = useState(localStorage.getItem("city"));
   const [gender, setGender] = useState(localStorage.getItem("gender"));
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     let data = {

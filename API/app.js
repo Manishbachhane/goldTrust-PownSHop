@@ -1,5 +1,5 @@
 import express from 'express';
-import bodyParser from 'body-parser';
+// import bodyParser from 'body-parser';
 import cors from 'cors';
 
 import UserRouter from './routes/user.router.js';
@@ -12,8 +12,8 @@ app.use(cors());
 
 //configuration to fetch req body content : body parser middleware
 //used to fetch req data from methods like : POST , PUT , PATCH , DELETE
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
 //route level middleware
 app.use("/user",UserRouter);

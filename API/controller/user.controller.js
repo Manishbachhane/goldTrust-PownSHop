@@ -70,16 +70,16 @@ export var deleteUser=async(req,res)=>{
 
 export var update=async(req,res)=>{
   try{
-    console.log(req.body.condition_obj)
-    // let userDetails = await UserSchemaModel.findOne(req.body.condition_obj);
-    console.log(req.body.content_obj)
-      let user=await UserSchemaModel.updateOne(req.body.condition_obj,{$set:req.body.content_obj});   
-    console.log(user);
+    let userDetails = await UserSchemaModel.findOne(req.body.condition_obj);
+    if(userDetails){
+      let user=await UserSchemaModel.updateMany(req.body.condition_obj,{$set:req.body.content_obj});   
       if(user)
         res.status(200).json({"status":true});
       else
         res.status(500).json({"status": false});
-      // res.status(404).json({"status":"Requested resource not available"});
+    }
+    else
+      res.status(404).json({"status":"Requested resource not available"});
   }catch(error){
     res.status(500).json({"status":false});        
   };

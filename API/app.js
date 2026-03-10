@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 
 import UserRouter from './routes/user.router.js';
-// import CategoryRouter from './routes/category.router.js';
+import ForgetPassword from './controller/fp.controller.js';
 
 const app=express();
 
@@ -17,7 +17,11 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 //route level middleware
 app.use("/user",UserRouter);
-// app.use("/category",CategoryRouter);
+
+
+
+//route for forgetpassword
+app.post("/forgetpassword",ForgetPassword);
 
 app.listen(3001);
 console.log("Server invoked at link http://localhost:3001");

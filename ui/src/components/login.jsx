@@ -101,6 +101,7 @@ function Login() {
           Don’t have an account?
           <span className="text-yellow-400 cursor-pointer hover:underline ml-1">
             <NavLink to="/register">Register</NavLink>
+            <NavLink to="/forgetpassword" >Forget Password?</NavLink>
           </span>
         </div>
       </div>

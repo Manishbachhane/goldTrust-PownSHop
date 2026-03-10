@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
+import { __userapiurl } from "../API_URL";
 
 function AdminHome() {
+  const [totalUsers, setTotalUsers] = useState(0);
+
+  useEffect(() => {
+    console.log("Fetching total users from API...");
+    axios.get(__userapiurl + "count").then(res => {
+      setTotalUsers(res.data.totalUsers);
+    });
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white pt-20 px-10">
       {/* Header */}
@@ -15,7 +26,9 @@ function AdminHome() {
       <div className="grid md:grid-cols-4 gap-6 mb-16">
         <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition">
           <h2 className="text-gray-400">Total Users</h2>
-          <p className="text-3xl font-bold text-yellow-400 mt-2">120</p>
+          <p className="text-3xl font-bold text-yellow-400 mt-2">
+            {totalUsers}
+          </p>
         </div>
 
         {/* <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition">

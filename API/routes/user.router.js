@@ -15,4 +15,6 @@ router.delete("/delete",UserController.deleteUser);
 
 router.patch("/update",UserController.update);
 
+router.get("/count", UserController.countUsers);
+
 export default router;

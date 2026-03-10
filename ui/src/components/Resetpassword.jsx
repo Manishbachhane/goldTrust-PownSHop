@@ -2,12 +2,13 @@ import { useState } from "react";
 import axios from "axios";
 import { __userapiurl } from "../API_URL";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function Resetpassword() {
+  const { email } = useParams();
   const navigate = useNavigate();
 
   const [output, setOutput] = useState("");
-  const [email, setEmail] = useState(localStorage.getItem("email"));
   const [password, setPassword] = useState("");
   const [cpassword, setCpassword] = useState("");
 
@@ -16,13 +17,13 @@ function Resetpassword() {
       setOutput("Password and Confirm Password must match");
       return;
     }
-
-    const userDetails = {
-      email: email,
-      password: password,
-    };
+    // setEmail(localStorage.getItem("email"));
+    // const userDetails = {
+    //   email: email,
+    //   password: password,
+    // };
     try {
-      setEmail("goldtrustpownshop@gmail.com");
+      // setEmail("goldtrustpownshop@gmail.com");
       console.log(email, password, "email and password reset password se");
       await axios.patch(__userapiurl + "update", {
         condition_obj: { email: email },

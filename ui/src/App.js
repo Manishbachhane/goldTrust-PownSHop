@@ -1,4 +1,4 @@
-import { Routes, Route,R } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Main from './components/Main';
@@ -20,7 +20,6 @@ function App() {
   return (
     <div>
       <Nav />
-
       <Routes>
         <Route path='' element={<Main />} ></Route>
         <Route path='/about' element={<About />} ></Route>
@@ -37,7 +36,6 @@ function App() {
         <Route path="/editprofile" element={<EditProfile/>}></Route>
         <Route path="/changepassword" element={<ChangePassword/>}></Route>
       </Routes>
-
       <Footer />
    
     </div >

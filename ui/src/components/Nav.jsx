@@ -187,7 +187,7 @@ function Nav() {
   const [role, setRole] = useState("guest");
 
   useEffect(() => {
-    setInterval(() => {
+    // setInterval(() => {
       const token = localStorage.getItem("token");
       const userRole = localStorage.getItem("role");
 
@@ -198,8 +198,8 @@ function Nav() {
       } else {
         setRole("guest");
       }
-    }, 1);
-  }, []);
+    // }, 1);
+  }, [role]);
 
   const profiledropdown = (
     <div className="relative group">

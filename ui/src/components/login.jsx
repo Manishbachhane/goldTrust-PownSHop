@@ -9,10 +9,11 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [output, setOutput] = useState("");
+  const [forgetPassword, setForgetPassword] = useState(null);
 
   const handleSubmit = () => {
-    console.log("Email:", email);
     const userDetails = { email: email, password: password };
+    console.log("Email:", email);
     console.log("Password:", password);
     console.log("UserDetails:", userDetails);
     axios
@@ -35,6 +36,7 @@ function Login() {
       })
       .catch(() => {
         setOutput("Invalid user or please verify your account....");
+        setForgetPassword("Forget Password...");
         // setEmail("");
         // setPassword("");
       });
@@ -42,7 +44,7 @@ function Login() {
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-gray-900 via-black to-gray-900 px-4">
-      <div className="w-full max-w-md bg-gray-800/70 backdrop-blur-lg border border-gray-700 rounded-3xl shadow-2xl p-8">
+      <div className="w-full max-w-md bg-gray-800/70 backdrop-blur-lg border border-gray-400 rounded-3xl shadow-2xl p-8">
         {/* Header */}
         <div className="text-center mb-8">
           <p className="text-yellow-400 text-3xl font-bold mt-2">
@@ -52,9 +54,7 @@ function Login() {
 
         {/* Message */}
         {output && (
-          <p className="text-center mb-4 text-green-400 font-medium">
-            {output}
-          </p>
+          <p className="text-center mb-4 text-red-400 font-medium">{output}</p>
         )}
 
         <form className="space-y-5">
@@ -97,11 +97,20 @@ function Login() {
         </form>
 
         {/* Extra Links */}
-        <div className="text-center mt-6 text-gray-400 text-sm">
+
+        {forgetPassword && (
+          <div className="text-center mt-6 text-gray-400 text-sm">
+            Forget your password?
+            <span className="text-red-400 font-bold cursor-pointer hover:underline ml-1">
+              <NavLink to="/forgetpassword">Forget Password</NavLink>
+            </span>
+            <br />
+          </div>
+        )}
+        <div className="text-center mt-5 text-gray-400 text-sm">
           Don’t have an account?
-          <span className="text-yellow-400 cursor-pointer hover:underline ml-1">
-            <NavLink to="/register">Register</NavLink>
-            <NavLink to="/forgetpassword" >Forget Password?</NavLink>
+          <span className="text-yellow-400  font-bold cursor-pointer hover:underline ml-1">
+            <NavLink to="/register">Create new account</NavLink>
           </span>
         </div>
       </div>

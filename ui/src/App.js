@@ -17,6 +17,7 @@ import Profile from './components/Profile';
 import ChangePassword from './components/ChangePassword';
 import Forgetpassword from './components/Forgetpassword';
 import Resetpassword from './components/Resetpassword';
+import AddCategory from './components/AddCategoryComponent/AddCategory';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route path="/changepassword" element={<ChangePassword/>}></Route>
         <Route path='/forgetpassword' element={<Forgetpassword/>}></Route>
           <Route path='/resetpassword/:email' element={<Resetpassword />} ></Route>
+          <Route path='/addcategory' element={<AddCategory />} ></Route>
 
       </Routes>
       <Footer />

@@ -87,9 +87,7 @@ export var update=async(req,res)=>{
 
 export var countUsers = async (req, res) => {
   try {
-    console.log("Counting users in the database...");
     const count = await UserSchemaModel.countDocuments();
-    console.log("Total users counted:", count);
     res.send({ totalUsers: count });
   } catch (err) {
     res.send(err);

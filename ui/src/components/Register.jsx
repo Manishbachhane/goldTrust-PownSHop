@@ -1,9 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
+import { NavLink ,useNavigate} from "react-router-dom";
 import { __userapiurl } from "../API_URL";
 
 function Register() {
+  const navigate = useNavigate();
   const [output, setOutput] = useState();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -27,7 +28,7 @@ function Register() {
     axios
       .post(__userapiurl + "save", userDetails)
       .then(() => {
-        setOutput("User register successfully....");
+        setOutput("User register successfully.... \n check your email for verification...");
         setName("");
         setEmail("");
         setPassword("");

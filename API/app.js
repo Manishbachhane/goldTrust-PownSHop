@@ -4,6 +4,7 @@ import cors from 'cors';
 import fileUpload from 'express-fileupload';
 import UserRouter from './routes/user.router.js';
 import CategoryRouter from './routes/category.router.js';
+import SubCategoryRouter from './routes/subcategory.router.js';
 
 import ForgetPassword from './controller/fp.controller.js';
 
@@ -23,6 +24,7 @@ app.use(fileUpload());
 //route level middleware
 app.use("/user",UserRouter);
 app.use("/category",CategoryRouter);
+app.use("/subcategory",SubCategoryRouter);
 
 
 

@@ -28,3 +28,14 @@ export const save=async(req,res)=>{
   res.status(500).json({"status":false});   
  }
 };
+
+
+export const fetch=async(req,res)=>{
+  var condition_obj=req.query; 
+  var cList=await CategorySchemaModel.find(condition_obj);
+  if(cList.length!=0)
+    res.status(200).json({"status":true,"info":cList});
+  else
+    res.status(404).json({"status":false});    
+};
+

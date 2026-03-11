@@ -13,12 +13,15 @@ function AddSubCategory() {
   const [cList, setCategoryList] = useState([]);
 
   useEffect(() => {
+    console.log("useEffect called");
     axios
       .get(__categoryapiurl + "fetch")
       .then(response => {
+        console.log(" in then");
         setCategoryList(response.data.info);
       })
       .catch(error => {
+        console.log("in catch");
         console.log(error);
       });
   }, []);

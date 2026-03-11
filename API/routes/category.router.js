@@ -7,4 +7,6 @@ const router=express.Router();
 
 router.post("/save",CategoryController.save);
 
-export default router;
+router.get("/fetch",CategoryController.fetch);
+
+export default router; 

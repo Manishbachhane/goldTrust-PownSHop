@@ -17,7 +17,7 @@ import Profile from './components/Profile';
 import ChangePassword from './components/ChangePassword';
 import Forgetpassword from './components/Forgetpassword';
 import Resetpassword from './components/Resetpassword';
-import AddCategory from './components/AddCategoryComponent/AddCategory';
+import AddCategory from './components/AddCategory';
 
 function App() {
   return (

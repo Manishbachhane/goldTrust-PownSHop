@@ -1,8 +1,10 @@
 import express from 'express';
 // import bodyParser from 'body-parser';
 import cors from 'cors';
-
+import fileUpload from 'express-fileupload';
 import UserRouter from './routes/user.router.js';
+import CategoryRouter from './routes/category.router.js';
+
 import ForgetPassword from './controller/fp.controller.js';
 
 const app=express();
@@ -15,8 +17,12 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
+//configuration to fetch file content : file upload middleware
+app.use(fileUpload());
+
 //route level middleware
 app.use("/user",UserRouter);
+app.use("/category",CategoryRouter);
 
 
 

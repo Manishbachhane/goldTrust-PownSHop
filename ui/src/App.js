@@ -18,6 +18,7 @@ import ChangePassword from './components/ChangePassword';
 import Forgetpassword from './components/Forgetpassword';
 import Resetpassword from './components/Resetpassword';
 import AddCategory from './components/AddCategory';
+import AddSubCategory from './components/AddSubCategory';
 
 function App() {
   return (
@@ -40,8 +41,8 @@ function App() {
         <Route path="/changepassword" element={<ChangePassword/>}></Route>
         <Route path='/forgetpassword' element={<Forgetpassword/>}></Route>
           <Route path='/resetpassword/:email' element={<Resetpassword />} ></Route>
-          <Route path='/addcategory' element={<AddCategory />} ></Route>
-
+        <Route path='/addcategory' element={<AddCategory />} ></Route>
+        <Route path='/addsubcategory' element={<AddSubCategory />} ></Route>
       </Routes>
       <Footer />
    

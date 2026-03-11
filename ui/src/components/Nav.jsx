@@ -95,7 +95,7 @@ function Nav() {
             >
               Admin-Home
             </NavLink>
- <NavLink
+            <NavLink
               to="/addcategory"
               className={({ isActive }) =>
                 `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
@@ -103,6 +103,16 @@ function Nav() {
             >
               Add Category
             </NavLink>
+
+            <NavLink
+              to="/addsubcategory"
+              className={({ isActive }) =>
+                `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
+              }
+            >
+              AddSubCategory
+            </NavLink>
+
             <NavLink
               to="/manageusers"
               className={({ isActive }) =>

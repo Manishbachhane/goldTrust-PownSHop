@@ -138,6 +138,14 @@ function Nav() {
             >
               User-Home
             </NavLink>
+            <NavLink
+              to="/viewcategory"
+              className={({ isActive }) =>
+                `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
+              }
+            >
+              View Category
+            </NavLink>
             {/* USER DROPDOWN */}
             {profiledropdown}
           </>

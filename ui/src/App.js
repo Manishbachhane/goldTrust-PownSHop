@@ -19,6 +19,8 @@ import Forgetpassword from './components/Forgetpassword';
 import Resetpassword from './components/Resetpassword';
 import AddCategory from './components/AddCategory';
 import AddSubCategory from './components/AddSubCategory';
+import ViewCategory from './components/ViewCategory';
+
 
 function App() {
   return (
@@ -43,6 +45,7 @@ function App() {
           <Route path='/resetpassword/:email' element={<Resetpassword />} ></Route>
         <Route path='/addcategory' element={<AddCategory />} ></Route>
         <Route path='/addsubcategory' element={<AddSubCategory />} ></Route>
+        <Route path='/viewcategory' element={<ViewCategory />} ></Route>
       </Routes>
       <Footer />
    

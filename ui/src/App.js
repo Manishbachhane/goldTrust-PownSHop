@@ -20,6 +20,7 @@ import Resetpassword from './components/Resetpassword';
 import AddCategory from './components/AddCategory';
 import AddSubCategory from './components/AddSubCategory';
 import ViewCategory from './components/ViewCategory';
+import ViewSubCategory from './components/ViewSubCategory';
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
         <Route path='/addcategory' element={<AddCategory />} ></Route>
         <Route path='/addsubcategory' element={<AddSubCategory />} ></Route>
         <Route path='/viewcategory' element={<ViewCategory />} ></Route>
+          <Route path='/viewsubcategory/:cnm' element={<ViewSubCategory />} ></Route> 
       </Routes>
       <Footer />
    

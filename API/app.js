@@ -5,7 +5,7 @@ import fileUpload from 'express-fileupload';
 import UserRouter from './routes/user.router.js';
 import CategoryRouter from './routes/category.router.js';
 import SubCategoryRouter from './routes/subcategory.router.js';
-
+import ProductRouter from './routes/product.router.js';
 import ForgetPassword from './controller/fp.controller.js';
 
 const app=express();
@@ -25,7 +25,7 @@ app.use(fileUpload());
 app.use("/user",UserRouter);
 app.use("/category",CategoryRouter);
 app.use("/subcategory",SubCategoryRouter);
-
+app.use("/product",ProductRouter);
 
 
 //route for forgetpassword

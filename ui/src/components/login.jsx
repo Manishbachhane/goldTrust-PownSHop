@@ -15,12 +15,13 @@ function Login() {
     const userDetails = { email: email, password: password };
     console.log("Email:", email);
     console.log("Password:", password);
-    console.log("UserDetails:", userDetails);
+    // console.log("UserDetails:", userDetails);
     axios
       .post(__userapiurl + "login", userDetails)
       .then(response => {
         const users = response.data.info;
 
+        localStorage.setItem("id", users._id);
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("name", users.name);
         localStorage.setItem("email", users.email);
@@ -31,8 +32,12 @@ function Login() {
         localStorage.setItem("info", users.info);
         localStorage.setItem("role", users.role);
 
-        if (users.role === "admin") Usenavigate("/admin");
-        else Usenavigate("/user");
+        if (users.role === "admin"){
+          Usenavigate("/admin");
+        }else{ 
+          Usenavigate("/user");
+        }
+        
       })
       .catch(() => {
         setOutput("Invalid user or please verify your account....");

@@ -46,16 +46,16 @@ function Main() {
     >
       <div ref={headingRef} className="flex h-24 items-center mb-2 ">
         <h2 className="text-4xl md:text-6xl font-bold mb-6 text-yellow-400">
-          Welcome to
+          Welcome to pown shop
         </h2>
 
         <div>
           {/* <img src="./assets/gold.png" alt="Gold Icon" className="ml-2 inline-block w-10 h-56  w-56" /> */}
-          <img
+          {/* <img
             src="./assets/pownShop.png"
             alt="Pawn Logo"
             className="h-56 inline-block mb-4 ml-2"
-          />
+          /> */}
         </div>
       </div>
       <p

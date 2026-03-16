@@ -9,8 +9,8 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Logout from './components/Logout'; 
 import Admin from './components/Admin'
-import User from './components/User';
 import Manageusers from './components/Manageusers';
+import User from './components/User';
 import EditProfile from './components/EditProfile';
 import Verifyuser from './components/Verifyuser';
 import Profile from './components/Profile';

@@ -23,7 +23,6 @@ export const save = async (req, res) => {
 };
 
 export const login = async (req, res) => {
-  // console.log('hello');
   const userDetails = { ...req.body, "status": 1 };
   const users = await UserSchemaModel.find(userDetails);
   console.log(users);
@@ -38,7 +37,7 @@ export const login = async (req, res) => {
 };
 
 export const fetch = async (req, res) => {
-
+  
   var condition_obj = req.query;
   console.log(condition_obj);
 

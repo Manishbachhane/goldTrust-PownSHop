@@ -24,7 +24,8 @@ export const save=async(req,res)=>{
   caticon.mv(uploadfilepath);
   res.status(201).json({"status":true});  
  }
- catch {
+ catch (error) {
+  console.error(error);
   res.status(500).json({"status":false});   
  }
 };
@@ -38,4 +39,3 @@ export const fetch=async(req,res)=>{
   else
     res.status(404).json({"status":false});    
 };
-

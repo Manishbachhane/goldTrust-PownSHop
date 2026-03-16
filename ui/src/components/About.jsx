@@ -45,7 +45,6 @@ function About() {
 
         </div>
       </section>
-
 </>
   );
 }

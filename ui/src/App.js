@@ -21,7 +21,7 @@ import AddCategory from './components/AddCategory';
 import AddSubCategory from './components/AddSubCategory';
 import ViewCategory from './components/ViewCategory';
 import ViewSubCategory from './components/ViewSubCategory';
-
+import AddProduct from './components/ProductComponent/AddProduct';
 
 function App() {
   return (
@@ -48,6 +48,8 @@ function App() {
         <Route path='/addsubcategory' element={<AddSubCategory />} ></Route>
         <Route path='/viewcategory' element={<ViewCategory />} ></Route>
           <Route path='/viewsubcategory/:cnm' element={<ViewSubCategory />} ></Route> 
+        {/* ===============Product Routes================= */}
+          <Route path='/addproduct' element={<AddProduct />} ></Route>
       </Routes>
       <Footer />
    

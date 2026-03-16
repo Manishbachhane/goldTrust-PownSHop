@@ -25,7 +25,7 @@ function UserHome() {
             Submit your gold or valuable items for verification and pricing.
           </p>
           <NavLink
-            to="/additem"
+            to="/addproduct"
             className="bg-yellow-400 text-black px-6 py-2 rounded-lg font-semibold hover:bg-yellow-500 transition"
           >
             Submit Item

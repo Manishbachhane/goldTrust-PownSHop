@@ -6,6 +6,7 @@ import rs from 'randomstring';
 import SubCategorySchemaModel from "../models/subcategory.model.js";
 
 export const save=async(req,res)=>{
+  console.log(req.body);
  const scategory=await SubCategorySchemaModel.find();
  const l=scategory.length;
  const _id=l==0?1:scategory[l-1]._id+1;
@@ -17,6 +18,7 @@ export const save=async(req,res)=>{
  const uploadfilepath = path.join(__dirname,'../../UI/public/assets/uploads/subcaticons',caticonnm);
 
  const scDetails={...req.body,"subcaticonnm":caticonnm,"_id":_id}; 
+  console.log(scDetails);
  try{
   await SubCategorySchemaModel.create(scDetails);
   caticon.mv(uploadfilepath);
@@ -29,6 +31,7 @@ export const save=async(req,res)=>{
 
 
 export const fetch=async(req,res)=>{
+  console.log(req.query);
   var condition_obj=req.query; 
   var scList=await SubCategorySchemaModel.find(condition_obj);
   if(scList.length!=0)

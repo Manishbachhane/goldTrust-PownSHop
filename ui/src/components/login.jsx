@@ -21,7 +21,7 @@ function Login() {
       .then(response => {
         const users = response.data.info;
 
-        localStorage.setItem("id", users._id);
+        localStorage.setItem("UserId", users._id);
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("name", users.name);
         localStorage.setItem("email", users.email);
@@ -32,12 +32,11 @@ function Login() {
         localStorage.setItem("info", users.info);
         localStorage.setItem("role", users.role);
 
-        if (users.role === "admin"){
+        if (users.role === "admin") {
           Usenavigate("/admin");
-        }else{ 
+        } else {
           Usenavigate("/user");
         }
-        
       })
       .catch(() => {
         setOutput("Invalid user or please verify your account....");

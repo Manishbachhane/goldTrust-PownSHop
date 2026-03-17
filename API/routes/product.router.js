@@ -5,4 +5,6 @@ const router=express.Router();
 
 router.post("/save",ProductController.save);
 
+router.get("/fetch",ProductController.fetch);
+
 export default router;

@@ -59,8 +59,18 @@ function AddProduct() {
     try {
       await axios.post(__productapiurl + "save", formData);
       setOutput("Product added successfully (Waiting for approval)");
+      // Clear form fields
+      setTimeout(() => {
+        setOutput("");
+        setTitle("");
+        setCatnm("");
+        setSubcatnm("");
+        setDescription("");
+        setPrice("");
+        setFilename(null);
+      }, 2000);
     } catch (err) {
-      setOutput("Product not added",err);
+      setOutput("Product not added", err);
     }
   };
 

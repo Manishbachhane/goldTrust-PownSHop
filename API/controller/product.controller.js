@@ -4,11 +4,9 @@ import rs from "randomstring";
 import ProductSchemaModel from "../models/product.model.js";
 
 export const save = async (req, res) => {
-
-
   const products = await ProductSchemaModel.find();
-const l = products.length;
-const _id = l == 0 ? 1 : products[l - 1]._id + 1;
+  const l = products.length;
+  const _id = l == 0 ? 1 : products[l - 1]._id + 1;
 
   const pdffile = req.files.filename;
   const pdfnm = rs.generate(10) + "_" + Date.now() + "_" + pdffile.name;
@@ -30,16 +28,22 @@ const _id = l == 0 ? 1 : products[l - 1]._id + 1;
   };
 
   try {
-
     await ProductSchemaModel.create(productDetails);
-
     pdffile.mv(uploadfilepath);
-
     res.status(201).json({status:true,msg:"Product Added"});
-
   }
   catch(err){
-    console.log(err);
-    res.status(500).json({status:false});
+      console.log(err);
+      res.status(500).json({status:false});
   }
+};
+
+export const fetch=async(req,res)=>{
+  console.log(req.query);
+  var condition_obj=req.query; 
+  var ProductList=await ProductSchemaModel .find(condition_obj);
+  if(ProductList.length!=0)
+    res.status(200).json({"status":true,"info":ProductList});
+  else
+    res.status(404).json({"status":false});    
 };

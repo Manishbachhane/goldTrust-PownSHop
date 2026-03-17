@@ -39,7 +39,7 @@ export const save = async (req, res) => {
 };
 
 export const fetch=async(req,res)=>{
-  console.log(req.query);
+  // console.log(req.query);
   var condition_obj=req.query; 
   var ProductList=await ProductSchemaModel .find(condition_obj);
   if(ProductList.length!=0)

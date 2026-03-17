@@ -19,7 +19,7 @@ function AddProduct() {
 
   // Category Fetch
   useEffect(() => {
-    console.log(localStorage.getItem("UserId"));
+    // console.log(localStorage.getItem("UserId"));
     axios
       .get(__categoryapiurl + "fetch")
       .then(res => {
@@ -135,12 +135,19 @@ function AddProduct() {
             className="w-full p-3 rounded-lg bg-gray-900 border border-gray-600 text-white"
           />
 
-          <input
+          {/* <input
             type="file"
             onChange={e => setFilename(e.target.files[0])}
             className="w-full text-white"
-          />
-
+          /> */}
+  <div>
+            {/* <label className="block text-gray-600 mb-1">SubCategory Icon</label> */}
+            <input
+              type="file"
+                  onChange={e => setFilename(e.target.files[0])}
+              className="w-full p-3 rounded-lg bg-gray-900 border border-gray-600 text-white"
+            />
+          </div>
           <button
             type="submit"
             className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 rounded-xl"

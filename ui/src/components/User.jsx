@@ -40,7 +40,7 @@ function UserHome() {
             View and track the status of your submitted items.
           </p>
           <NavLink
-            to="/myitems"
+            to="/showproducts"
             className="bg-yellow-400 text-black px-6 py-2 rounded-lg font-semibold hover:bg-yellow-500 transition"
           >
             View Items

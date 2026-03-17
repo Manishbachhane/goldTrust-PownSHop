@@ -22,7 +22,7 @@ import AddSubCategory from './components/AddSubCategory';
 import ViewCategory from './components/ViewCategory';
 import ViewSubCategory from './components/ViewSubCategory';
 import AddProduct from './components/ProductComponent/AddProduct';
-
+import ShowProducts from './components/ProductComponent/ShowProducts';
 function App() {
   return (
     <div>
@@ -50,6 +50,7 @@ function App() {
           <Route path='/viewsubcategory/:cnm' element={<ViewSubCategory />} ></Route> 
         {/* ===============Product Routes================= */}
           <Route path='/addproduct' element={<AddProduct />} ></Route>
+          <Route path='/showproducts' element={<ShowProducts />} ></Route>
       </Routes>
       <Footer />
    

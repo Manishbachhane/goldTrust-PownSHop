@@ -25,39 +25,44 @@ import AddProduct from './components/ProductComponent/AddProduct';
 import ShowProducts from './components/ProductComponent/ShowProducts';
 import AIClient from './components/AIClient';
 import Chart from './components/Admin/Chart'
-
+import VerifyItems from './components/Admin/VerifyItems';
 
 function App() {
   return (
     <div>
       <Nav />
       <Routes>
+        {/* ===============General Routes================= */}
         <Route path='' element={<Main />} ></Route>
         <Route path='/about' element={<About />} ></Route>
         <Route path='/contact' element={<Contact />} ></Route>
         <Route path='/service' element={<Service />} ></Route>
         <Route path='/register' element={<Register />} ></Route>
+        <Route path='/viewcategory' element={<ViewCategory />} ></Route>
+        <Route path='/viewsubcategory/:cnm' element={<ViewSubCategory />} ></Route> 
+        {/* ===============User Routes================= */}
+        <Route path='/user' element={<User />} ></Route>
+        <Route path='/vemail/:email' element={<Verifyuser />} ></Route>
+        {/* ===============user and admin Routes================= */}
         <Route path='/login' element={<Login />} ></Route>
         <Route path='/logout' element={<Logout />} ></Route>
-        <Route path='/admin' element={<Admin />} ></Route>
-        <Route path='/user' element={<User />} ></Route>
         <Route path='/profile' element={<Profile />} ></Route>
-        <Route path='/vemail/:email' element={<Verifyuser />} ></Route>
-        <Route path='/manageusers' element={   <Manageusers/>} ></Route>
         <Route path="/editprofile" element={<EditProfile/>}></Route>
         <Route path="/changepassword" element={<ChangePassword/>}></Route>
         <Route path='/forgetpassword' element={<Forgetpassword/>}></Route>
-          <Route path='/resetpassword/:email' element={<Resetpassword />} ></Route>
+        <Route path='/resetpassword/:email' element={<Resetpassword />} ></Route>
+        {/* ===============Product Routes================= */}
+        <Route path='/addproduct' element={<AddProduct />} ></Route>
+        <Route path='/showproducts' element={<ShowProducts />} ></Route>
+        {/* ===============AI Client Routes================= */}
+        <Route path='/aiclient' element={<AIClient />} ></Route> 
+        <Route path='/chart' element={<Chart />} ></Route>
+        {/* ===============Admin ================= */}
+        <Route path='/admin' element={<Admin />} ></Route>
+        <Route path='/verifyitems' element={<VerifyItems />} ></Route>
         <Route path='/addcategory' element={<AddCategory />} ></Route>
         <Route path='/addsubcategory' element={<AddSubCategory />} ></Route>
-        <Route path='/viewcategory' element={<ViewCategory />} ></Route>
-          <Route path='/viewsubcategory/:cnm' element={<ViewSubCategory />} ></Route> 
-        {/* ===============Product Routes================= */}
-          <Route path='/addproduct' element={<AddProduct />} ></Route>
-          <Route path='/showproducts' element={<ShowProducts />} ></Route>
-         {/* ===============AI Client Routes================= */}
-           <Route path='/aiclient' element={<AIClient />} ></Route> 
-            <Route path='/chart' element={<Chart />} ></Route>
+        <Route path='/manageusers' element={   <Manageusers/>} ></Route>
       </Routes>
       <Footer />
    

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { __userapiurl } from "../API_URL";
+import { __userapiurl } from "../../API_URL";
 
 function ManageUsers() {
   const [users, setUserDetails] = useState([]);
@@ -17,7 +17,7 @@ function ManageUsers() {
         console.log(error);
       });
   };
-    
+
   useEffect(() => {
     fetchUsers();
   }, []);

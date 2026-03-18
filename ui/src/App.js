@@ -8,8 +8,8 @@ import Service from './components/Service';
 import Register from './components/Register';
 import Login from './components/Login';
 import Logout from './components/Logout'; 
-import Admin from './components/Admin'
-import Manageusers from './components/Manageusers';
+import Admin from './components/Admin/Admin'
+import Manageusers from './components/Admin/Manageusers';
 import User from './components/user/User';
 import EditProfile from './components/EditProfile';
 import Verifyuser from './components/Verifyuser';
@@ -23,6 +23,10 @@ import ViewCategory from './components/ViewCategory';
 import ViewSubCategory from './components/ViewSubCategory';
 import AddProduct from './components/ProductComponent/AddProduct';
 import ShowProducts from './components/ProductComponent/ShowProducts';
+import AIClient from './components/AIClient';
+import Chart from './components/Admin/Chart'
+
+
 function App() {
   return (
     <div>
@@ -51,6 +55,9 @@ function App() {
         {/* ===============Product Routes================= */}
           <Route path='/addproduct' element={<AddProduct />} ></Route>
           <Route path='/showproducts' element={<ShowProducts />} ></Route>
+         {/* ===============AI Client Routes================= */}
+           <Route path='/aiclient' element={<AIClient />} ></Route> 
+            <Route path='/chart' element={<Chart />} ></Route>
       </Routes>
       <Footer />
    

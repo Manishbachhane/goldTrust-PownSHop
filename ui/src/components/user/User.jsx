@@ -111,11 +111,6 @@ function UserHome() {
           </NavLink>
         </div>
       </div>
-
-      {/* Footer */}
-      <div className="text-center text-gray-500 pb-6">
-        © 2026 GoldTrust Pawn — Secure & Trusted
-      </div>
     </div>
   );
 }

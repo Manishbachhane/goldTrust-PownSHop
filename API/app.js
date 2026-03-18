@@ -7,6 +7,7 @@ import CategoryRouter from './routes/category.router.js';
 import SubCategoryRouter from './routes/subcategory.router.js';
 import ProductRouter from './routes/product.router.js';
 import ForgetPassword from './controller/fp.controller.js';
+import aiChatRoute from "./routes/aiChat.js";
 
 const app=express();
 
@@ -27,6 +28,7 @@ app.use("/category",CategoryRouter);
 app.use("/subcategory",SubCategoryRouter);
 app.use("/product",ProductRouter);
 
+app.use("/api/ai", aiChatRoute);
 
 //route for forgetpassword
 app.post("/forgetpassword",ForgetPassword);

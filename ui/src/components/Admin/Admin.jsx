@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-import { __userapiurl } from "../API_URL";
+import { __userapiurl } from "../../API_URL";
 
 function AdminHome() {
   const [totalUsers, setTotalUsers] = useState(0);
@@ -77,8 +77,7 @@ function AdminHome() {
           >
             Verify Items
           </NavLink>
-        </div> 
-        
+        </div>
 
         {/* Reports*/}
         <div className="bg-gray-800 rounded-2xl p-8 shadow-lg hover:scale-105 transition">
@@ -89,7 +88,7 @@ function AdminHome() {
             View system reports and transaction insights.
           </p>
           <NavLink
-            to="/reports"
+            to="/chart"
             className="bg-yellow-400 text-black px-6 py-2 rounded-lg font-semibold hover:bg-yellow-500 transition"
           >
             View Reports

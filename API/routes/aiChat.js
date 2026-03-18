@@ -4,7 +4,7 @@ import OpenAI from "openai";
 const router = express.Router();
 
 const openai = new OpenAI({
-  apiKey: "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"
+  apiKey:  process.env.OPENAI_API_KEY 
 });
 
 router.post("/chat", async (req, res) => {

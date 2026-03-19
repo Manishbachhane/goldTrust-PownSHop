@@ -9,7 +9,7 @@ import SubCategoryRouter from './routes/subcategory.router.js';
 import ProductRouter from './routes/product.router.js';
 import ForgetPassword from './controller/fp.controller.js';
 import aiChatRoute from "./routes/aiChat.js";
-
+import contactRoutes from "./routes/contact.router.js";
 const app=express();
 
 //to handle cross origin request
@@ -30,6 +30,9 @@ app.use("/subcategory",SubCategoryRouter);
 app.use("/product",ProductRouter);
 
 app.use("/api/ai", aiChatRoute);
+
+//sending mail route
+app.use("/mail", contactRoutes);
 
 //route for forgetpassword
 app.post("/forgetpassword",ForgetPassword);

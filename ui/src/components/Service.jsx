@@ -1,122 +1,180 @@
 import React from "react";
+import { motion } from "framer-motion";
 import img from "../Gemini_Generated_Image_hv2b0fhv2b0fhv2b.png";
-function ServiceDetail() {
+
+const ServiceDetail = () => {
+  const fadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i = 1) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.2, duration: 0.8 },
+    }),
+  };
+
+  const services = [
+    {
+      title: "Gold Pawn",
+      desc: "Get instant cash by pawning your gold jewelry with best rates.",
+    },
+    {
+      title: "Electronics Pawn",
+      desc: "Pawn mobiles, laptops, and gadgets for quick money.",
+    },
+    {
+      title: "Sell Items",
+      desc: "Sell your old valuables at best market price.",
+    },
+    {
+      title: "Buy Products",
+      desc: "Buy verified second-hand products at affordable prices.",
+    },
+  ];
+
+  const whyChoose = [
+    "Instant Cash",
+    "Safe Storage",
+    "Trusted Valuation",
+    "No Hidden Charges",
+    "Easy Process",
+    "Customer Support",
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-50 py-10 px-4 flex justify-center">
-      <div className="w-full max-w-5xl bg-white rounded-2xl border border-gray-200 shadow-sm">
+    <div className="min-h-screen bg-gray-900 text-gray-200 pt-12  bg-red-500 flex justify-center">
+      <div className="w-full  bg-gray-900 space-y-10 p-6">
         {/* Header */}
-        <div className="p-6 border-b border-gray-200 flex justify-between items-center">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          custom={0}
+          variants={fadeUp}
+          className="flex justify-between items-center border-b border-gray-700 pb-4"
+        >
           <div>
-            <h1 className="text-2xl font-semibold text-gray-800">
+            <h1 className="text-3xl font-bold text-yellow-500">
               GoldTrust Pawn Shop
             </h1>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-400">
               Secure • Trusted • Instant Cash Services
             </p>
           </div>
 
-          <button className="px-4 py-2 bg-gray-900 text-white text-sm rounded-lg hover:bg-black transition">
+          <button className="px-4 py-2 bg-yellow-500 text-gray-900 font-semibold rounded-lg hover:bg-yellow-400 transition">
             Contact
           </button>
-        </div>
+        </motion.div>
 
-        {/* Content */}
-        <div className="p-6 space-y-8">
-          {/* Banner */}
-          {/* <div className="h-52 bg-gray-100 rounded-xl flex items-center justify-center text-gray-400"> */}
-          <img
-            className="h-52 bg-gray-100 cover w-full rounded-xl flex items-center justify-center text-gray-400"
-            src={img}
-            alt=""
-          />
-          {/* </div> */}
+        {/* Banner */}
+        <motion.img
+          src={img}
+          alt="GoldTrust Pawn Shop"
+          className="w-full h-52 md:h-64 object-cover rounded-xl hover:scale-105 transition-transform duration-500"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        />
 
-          {/* About */}
+        {/* About */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          custom={1}
+          variants={fadeUp}
+        >
+          <h2 className="text-2xl font-semibold text-yellow-500 mb-2">
+            About Our Services
+          </h2>
+          <p className="text-gray-300 leading-relaxed text-sm md:text-base">
+            GoldTrust Pawn Shop provides instant cash solutions against valuable
+            items like gold, electronics, and luxury goods. We ensure fair
+            valuation, transparent process, and complete security for your
+            assets.
+          </p>
+        </motion.div>
+
+        {/* Services */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          custom={2}
+          variants={fadeUp}
+        >
+          <h2 className="text-2xl font-semibold text-yellow-500 mb-4">
+            Our Services
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {services.map((service, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.2 }}
+                className="border border-gray-700 rounded-xl p-4 hover:shadow-lg hover:bg-yellow-500 hover:text-gray-900 transition cursor-pointer"
+              >
+                <h3 className="font-semibold text-yellow-500 mb-1">
+                  {service.title}
+                </h3>
+                <p className="text-gray-300 text-sm">{service.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Why Choose Us */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          custom={3}
+          variants={fadeUp}
+        >
+          <h2 className="text-2xl font-semibold text-yellow-500 mb-4">
+            Why Choose GoldTrust?
+          </h2>
+          <div className="grid sm:grid-cols-3 md:grid-cols-3 gap-4 text-gray-300 text-sm">
+            {whyChoose.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="p-3 border border-gray-700 rounded-xl hover:bg-yellow-500 hover:text-gray-900 transition cursor-pointer"
+              >
+                {item}
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* CTA */}
+        <motion.div
+          className="bg-gray-700 rounded-xl p-6 flex flex-col sm:flex-row justify-between items-center gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
           <div>
-            <h2 className="text-lg font-medium text-gray-800 mb-2">
-              About Our Services
-            </h2>
-            <p className="text-sm text-gray-600 leading-relaxed">
-              GoldTrust Pawn Shop provides instant cash solutions against
-              valuable items like gold, electronics, and luxury goods. We ensure
-              fair valuation, transparent process, and complete security for
-              your assets.
-            </p>
+            <h3 className="text-2xl font-semibold text-yellow-500">
+              Need Instant Cash?
+            </h3>
+            <p className="text-gray-400">Visit our shop or apply online now</p>
           </div>
 
-          {/* Services List */}
-          <div>
-            <h2 className="text-lg font-medium text-gray-800 mb-4">
-              Our Services
-            </h2>
-
-            <div className="grid sm:grid-cols-2 gap-4">
-              {/* Service Card */}
-              <div className="border rounded-xl p-4 hover:shadow-md transition">
-                <h3 className="font-medium text-gray-800">Gold Pawn</h3>
-                <p className="text-sm text-gray-500 mt-1">
-                  Get instant cash by pawning your gold jewelry with best rates.
-                </p>
-              </div>
-
-              <div className="border rounded-xl p-4 hover:shadow-md transition">
-                <h3 className="font-medium text-gray-800">Electronics Pawn</h3>
-                <p className="text-sm text-gray-500 mt-1">
-                  Pawn mobiles, laptops, and gadgets for quick money.
-                </p>
-              </div>
-
-              <div className="border rounded-xl p-4 hover:shadow-md transition">
-                <h3 className="font-medium text-gray-800">Sell Items</h3>
-                <p className="text-sm text-gray-500 mt-1">
-                  Sell your old valuables at best market price.
-                </p>
-              </div>
-
-              <div className="border rounded-xl p-4 hover:shadow-md transition">
-                <h3 className="font-medium text-gray-800">Buy Products</h3>
-                <p className="text-sm text-gray-500 mt-1">
-                  Buy verified second-hand products at affordable prices.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Why Choose Us */}
-          <div>
-            <h2 className="text-lg font-medium text-gray-800 mb-4">
-              Why Choose GoldTrust?
-            </h2>
-
-            <div className="grid sm:grid-cols-3 gap-4 text-sm text-gray-600">
-              <div className="p-3 border rounded-xl">Instant Cash</div>
-              <div className="p-3 border rounded-xl">Safe Storage</div>
-              <div className="p-3 border rounded-xl">Trusted Valuation</div>
-              <div className="p-3 border rounded-xl">No Hidden Charges</div>
-              <div className="p-3 border rounded-xl">Easy Process</div>
-              <div className="p-3 border rounded-xl">Customer Support</div>
-            </div>
-          </div>
-
-          {/* CTA */}
-          <div className="bg-gray-100 rounded-xl p-5 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div>
-              <h3 className="text-lg font-semibold text-gray-800">
-                Need Instant Cash?
-              </h3>
-              <p className="text-sm text-gray-500">
-                Visit our shop or apply online now
-              </p>
-            </div>
-
-            <button className="px-5 py-2 bg-gray-900 text-white rounded-lg text-sm hover:bg-black transition">
-              Get Started
-            </button>
-          </div>
-        </div>
+          <button className="px-6 py-3 bg-yellow-500 text-gray-900 font-semibold rounded-lg hover:bg-yellow-400 transition">
+            Get Started
+          </button>
+        </motion.div>
       </div>
     </div>
   );
-}
+};
 
 export default ServiceDetail;

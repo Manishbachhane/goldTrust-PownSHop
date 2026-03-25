@@ -1,6 +1,6 @@
-import url from 'url';
-import path from 'path';
-import rs from 'randomstring';
+  import url from 'url';
+  import path from 'path';
+  import rs from 'randomstring';
 
 //to link subcategory model
 import SubCategorySchemaModel from "../models/subcategory.model.js";

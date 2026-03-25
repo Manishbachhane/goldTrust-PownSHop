@@ -10,8 +10,10 @@ import ProductRouter from './routes/product.router.js';
 import ForgetPassword from './controller/fp.controller.js';
 import aiChatRoute from "./routes/aiChat.js";
 import contactRoutes from "./routes/contact.router.js";
-const app=express();
 
+import Gateway from './controller/payment.controller.js';
+
+const app=express();
 //to handle cross origin request
 app.use(cors());
 
@@ -33,6 +35,11 @@ app.use("/api/ai", aiChatRoute);
 
 //sending mail route
 app.use("/mail", contactRoutes);
+
+
+//method to load Gateway
+app.post("/payment",Gateway);
+
 
 //route for forgetpassword
 app.post("/forgetpassword",ForgetPassword);

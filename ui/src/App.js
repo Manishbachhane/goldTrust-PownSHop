@@ -7,7 +7,7 @@
   import Service from './components/Service';
   import Register from './components/Register';
   import Login from './components/Login';
-  import Logout from './components/Logout'; 
+  import Logout from './components/Logout';
   import Admin from './components/Admin/Admin'
   import Manageusers from './components/Admin/Manageusers';
   import User from './components/user/User';
@@ -26,7 +26,11 @@
   import AIClient from './components/AIClient';
   import Chart from './components/Admin/Chart'
   import VerifyItems from './components/Admin/VerifyItems';
-
+  //==============Charity and Payment Components================= 
+import Charity from './components/payment/Charity';
+import Payment from './components/payment/Payment';
+import Success from './components/payment/Success';
+import Cancel from './components/payment/Cancel';
   function App() {
     return (
       <div>
@@ -63,6 +67,11 @@
           <Route path='/addcategory' element={<AddCategory />} ></Route>
           <Route path='/addsubcategory' element={<AddSubCategory />} ></Route>
           <Route path='/manageusers' element={   <Manageusers/>} ></Route>
+      {/*===================Charity and Payment Routes================= */}
+              <Route path="/charity" element={<Charity />} ></Route>
+              <Route path="/payment/:uid/:amt/" element={<Payment />} ></Route>
+              <Route path="/success" element={<Success />} ></Route>
+              <Route path="/cancel" element={<Cancel />} ></Route>
         </Routes>
         <Footer />
     

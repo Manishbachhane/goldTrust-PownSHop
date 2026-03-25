@@ -163,6 +163,14 @@ function Nav() {
             >
               AI Client
             </NavLink>
+            <NavLink
+              to="/charity"
+              className={({ isActive }) =>
+                `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
+              }
+            >
+              Charity
+            </NavLink>
             {/* USER DROPDOWN */}
             {profiledropdown}
           </>

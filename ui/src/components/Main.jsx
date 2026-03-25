@@ -13,7 +13,7 @@ const Home = () => {
     // Cinematic zoom bg
     gsap.fromTo(
       heroRef.current,
-      { scale: 1.2 },
+      { scale: 1.4 },
       { scale: 1, duration: 3, ease: "power2.out" },
     );
 
@@ -143,7 +143,7 @@ const Home = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-6 animate-bounce text-gray-400 text-sm">
+        <div className="absolute bottom-6 animate-bounce text-gray-400 text-sm cursor-pointer">
           ↓ Scroll
         </div>
       </div>

@@ -47,3 +47,17 @@ export const fetch=async(req,res)=>{
   else
     res.status(404).json({"status":false});    
 };
+
+// UPDATE STATUS
+export const updateStatus = async (req, res) => {
+  try {
+    const { status } = req.body;
+
+    await ProductScModel.findByIdAndUpdate(req.params.id, { status });
+
+    res.json({ success: true, message: "Status updated" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false });
+  }
+};

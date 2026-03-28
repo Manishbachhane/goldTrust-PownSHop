@@ -1,7 +1,7 @@
   import { Routes, Route } from 'react-router-dom';
   import Nav from './components/Nav';
   import Footer from './components/Footer';
-  import Main from './components/Main';
+  import Home from './components/Home';
   import About from './components/About';
   import Contact from './components/Contact';
   import Service from './components/Service';
@@ -37,10 +37,10 @@ import Cancel from './components/payment/Cancel';
         <Nav />
         <Routes>
           {/* ===============General Routes================= */}
-          <Route path='' element={<Main />} ></Route>
-          <Route path='/about' element={<About />} ></Route>
+          <Route path='' element={<Home />} ></Route>
+          {/* <Route path='/about' element={<About />} ></Route>
           <Route path='/contact' element={<Contact />} ></Route>
-          <Route path='/service' element={<Service />} ></Route>
+          <Route path='/service' element={<Service />} ></Route> */}
           <Route path='/register' element={<Register />} ></Route>
           <Route path='/viewcategory' element={<ViewCategory />} ></Route>
           <Route path='/viewsubcategory/:cnm' element={<ViewSubCategory />} ></Route> 

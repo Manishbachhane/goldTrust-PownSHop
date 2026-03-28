@@ -10,3 +10,5 @@ export const __paymentapiurl = `${BASE_URL}payment/`;
 
 export const __aichaturl = `${BASE_URL}api/ai/`;
 export const __contacturl = `${BASE_URL}mail/`;
+
+export const __verifyapiurl = `${BASE_URL}verify/`;

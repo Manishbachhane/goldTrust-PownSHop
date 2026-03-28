@@ -24,22 +24,22 @@ function AdminHome() {
       </div>
       {/* Stats Section */}
       <div className="grid md:grid-cols-4 gap-6 mb-16">
-        <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition">
+        <div className="bg-white/5 backdrop-blur-lg border border-gray-700 rounded-2xl p-6 shadow-lg hover:scale-105 transition">
           <h2 className="text-gray-400">Total Users</h2>
           <p className="text-3xl font-bold text-yellow-400 mt-2">
             {totalUsers}
           </p>
         </div>
 
-        <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition">
+        <div className="bg-white/5 backdrop-blur-lg border border-gray-700 rounded-2xl p-6 shadow-lg hover:scale-105 transition">
           <h2 className="text-gray-400">Pending Items</h2>
           <p className="text-3xl font-bold text-yellow-400 mt-2">15</p>
         </div>
-        <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition">
+        <div className="bg-white/5 backdrop-blur-lg border border-gray-700 rounded-2xl p-6 shadow-lg hover:scale-105 transition">
           <h2 className="text-gray-400">Approved Items</h2>
           <p className="text-3xl font-bold text-yellow-400 mt-2">78</p>
         </div>
-        <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition">
+        <div className="bg-white/5 backdrop-blur-lg border border-gray-700 rounded-2xl p-6 shadow-lg hover:scale-105 transition">
           <h2 className="text-gray-400">Rejected Items</h2>
           <p className="text-3xl font-bold text-red-400 mt-2">7</p>
         </div>
@@ -48,7 +48,7 @@ function AdminHome() {
       {/* Quick Actions */}
       <div className="grid md:grid-cols-3 gap-8 pb-20">
         {/* Manage Users */}
-        <div className="bg-gray-800 rounded-2xl p-8 shadow-lg hover:scale-105 transition">
+        <div className="bg-white/5 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 shadow-lg hover:scale-105 transition">
           <h2 className="text-2xl font-semibold text-yellow-400 mb-4">
             Manage Users
           </h2>
@@ -64,7 +64,7 @@ function AdminHome() {
         </div>
 
         {/* Verify Items */}
-        <div className="bg-gray-800 rounded-2xl p-8 shadow-lg hover:scale-105 transition">
+        <div className="bg-white/5 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 shadow-lg hover:scale-105 transition">
           <h2 className="text-2xl font-semibold text-yellow-400 mb-4">
             Verify Pawn Items
           </h2>
@@ -80,7 +80,7 @@ function AdminHome() {
         </div>
 
         {/* Reports*/}
-        <div className="bg-gray-800 rounded-2xl p-8 shadow-lg hover:scale-105 transition">
+        <div className="bg-white/5 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 shadow-lg hover:scale-105 transition">
           <h2 className="text-2xl font-semibold text-yellow-400 mb-4">
             Reports & Analytics
           </h2>

@@ -79,67 +79,88 @@ const Contact = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 via-black to-gray-900 min-h-screen flex justify-center items-center">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-gray-800/70 backdrop-blur-lg border border-gray-400 rounded-3xl shadow-2xl p-8 p-6  rounded-xl w-full max-w-lg space-y-5"
-      >
-        <div className="text-center mb-4">
-          <p className="text-yellow-400 text-4xl font-bold mt-2">Contact Us</p>
+  <div className="min-h-screen relative bg-gradient-to-br from-gray-900 via-black to-gray-900 to-gray-900 text-white flex items-center justify-center px-6">
+
+    {/* Glow Effects */}
+    {/* <div className="absolute top-[-100px] left-[-100px] w-[300px] h-[300px] bg-yellow-500/20 blur-3xl rounded-full"></div>
+    <div className="absolute bottom-[-100px] right-[-100px] w-[300px] h-[300px] bg-yellow-500/10 blur-3xl rounded-full"></div> */}
+
+    {/* Content */}
+    <div className="relative z-10 w-full max-w-5xl grid md:grid-cols-2 gap-10 items-center">
+
+      {/* LEFT SIDE */}
+      <div>
+        <h1 className="text-4xl md:text-5xl font-bold text-yellow-400 leading-tight">
+          Get in Touch
+        </h1>
+        <p className="mt-4 text-gray-400 max-w-md">
+          Need instant cash or have questions? Contact us anytime — we’re here to help you.
+        </p>
+
+        <div className="mt-6 space-y-2 text-gray-400 text-sm">
+          <p>📍 Trusted Pawn Services</p>
+          <p>⚡ Instant Response</p>
+          <p>🔒 100% Secure Process</p>
         </div>
-        {/* NAME */}
+      </div>
+
+      {/* RIGHT SIDE FORM */}
+      <form onSubmit={handleSubmit} className="space-y-5">
+
+        {/* Name */}
         <div>
-          <label className=" block text-gray-300 mb-2 font-medium">Name</label>
+          <label className="text-gray-400 text-sm">Name</label>
           <input
             name="name"
             value={form.name}
             onChange={handleChange}
-            placeholder="Name"
-            className="w-full p-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-yellow-400 outline-none transition"
+            placeholder="Enter your name"
+            className="w-full mt-1 p-3 bg-transparent border-b border-gray-600 focus:border-yellow-400 outline-none transition"
           />
           {errors.name && (
-            <p className="text-red-400 text-sm mb-2">{errors.name}</p>
+            <p className="text-red-400 text-sm">{errors.name}</p>
           )}
         </div>
 
-        {/* EMAIL */}
+        {/* Email */}
         <div>
-          <label className="block text-gray-300 mb-2 font-medium">Email</label>
+          <label className="text-gray-400 text-sm">Email</label>
           <input
             name="email"
             value={form.email}
             onChange={handleChange}
-            placeholder="Email"
-            className="w-full p-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-yellow-400 outline-none transition"
+            placeholder="Enter your email"
+            className="w-full mt-1 p-3 bg-transparent border-b border-gray-600 focus:border-yellow-400 outline-none transition"
           />
           {errors.email && (
-            <p className="text-red-400 text-sm mb-2">{errors.email}</p>
+            <p className="text-red-400 text-sm">{errors.email}</p>
           )}
         </div>
 
-        {/* MESSAGE */}
+        {/* Message */}
         <div>
-          <label className="block text-gray-300 mb-2 font-medium">
-            Message
-          </label>
+          <label className="text-gray-400 text-sm">Message</label>
           <textarea
             name="message"
             value={form.message}
             onChange={handleChange}
-            placeholder="Message"
-            className="w-full p-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-yellow-400 outline-none transition h-32 resize-none"
+            placeholder="Write your message..."
+            className="w-full mt-1 p-3 bg-transparent border-b border-gray-600 focus:border-yellow-400 outline-none transition h-24 resize-none"
           />
           {errors.message && (
-            <p className="text-red-400 text-sm mb-2">{errors.message}</p>
+            <p className="text-red-400 text-sm">{errors.message}</p>
           )}
         </div>
 
-        <button className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 rounded-2xl shadow-lg transition duration-300 hover:scale-105">
-          Send
+        {/* Button */}
+        <button className="w-full mt-4 bg-yellow-500 text-black font-semibold py-3 rounded-xl hover:bg-yellow-400 transition duration-300 hover:scale-[1.02]">
+          Send Message
         </button>
+
       </form>
     </div>
-  );
+  </div>
+);
 };
 
 export default Contact;

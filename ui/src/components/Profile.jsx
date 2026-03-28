@@ -18,7 +18,7 @@ function Profile() {
     >
       <div
         className=" w-full max-w-lg 
-     bg-gradient-to-br from-gray-900 via-black to-gray-900
+     bg-white/5 backdrop-blur-lg 
       border border-yellow-500/100 
       rounded-2xl shadow-5xl shadow-gray-800 p-8"
       >
@@ -77,7 +77,6 @@ function Profile() {
         {/* Buttons */}
 
         <div className="flex gap-4 mt-7">
-  
           <NavLink
             to="/editprofile"
             className="flex-1 pl-3 bg-yellow-500 text-black py-2 rounded-lg font-semibold hover:bg-yellow-600 transition"
@@ -87,7 +86,6 @@ function Profile() {
           </NavLink>
           {/* </button> */}
 
-  
           <NavLink
             to="/changepassword"
             className="flex-1 pl-3 border border-yellow-500 text-yellow-400 py-2 rounded-lg hover:bg-yellow-500 hover:text-black transition"

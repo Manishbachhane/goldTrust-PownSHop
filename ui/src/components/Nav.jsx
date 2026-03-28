@@ -179,17 +179,17 @@ function Nav() {
         {role === "guest" && (
           <>
             <div className="space-x-6">
-              <NavLink
-                to="/"
+              <a
+                href="/#home"
                 className={({ isActive }) =>
                   `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
                 }
               >
                 Home
-              </NavLink>
+              </a>
 
-              <NavLink
-                to="/about"
+              <a
+                href="/#about"
                 className={({ isActive }) =>
                   `nav-content hover:text-yellow-400 hover:font-bold ${
                     isActive
@@ -199,9 +199,9 @@ function Nav() {
                 }
               >
                 About-us
-              </NavLink>
-              <NavLink
-                to="/service"
+              </a>
+              <a
+                href="/#service"
                 className={({ isActive }) =>
                   `nav-content hover:text-yellow-400 hover:font-bold ${
                     isActive
@@ -211,10 +211,10 @@ function Nav() {
                 }
               >
                 Service
-              </NavLink>
+              </a>
 
-              <NavLink
-                to="/contact"
+              <a
+                href="/#contact"
                 className={({ isActive }) =>
                   `nav-content hover:text-yellow-400 hover:font-bold ${
                     isActive
@@ -224,27 +224,55 @@ function Nav() {
                 }
               >
                 Contact
-              </NavLink>
+              </a>
 
-              <NavLink
-                to="/register"
+              <a
+                href="/register"
                 className={({ isActive }) =>
                   `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
                 }
               >
                 Register
-              </NavLink>
+              </a>
 
-              <NavLink
-                to="/login"
+              <a
+                href="/login"
                 className={({ isActive }) =>
                   `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
                 }
               >
                 Login
-              </NavLink>
+              </a>
             </div>
           </>
+          // <>
+          //   <div className="space-x-6">
+          //     <a
+          //       href="#home"
+          //       className={({ isActive }) =>
+          //         `hover:text-yellow-400 hover:font-bold ${
+          //           isActive
+          //             ? "text-yellow-400 font-bold border-b-2 border-yellow-400"
+          //             : ""
+          //         }`
+          //       }
+          //     >
+          //       Home
+          //     </a>
+
+          //     <a href="#about" className="nav-content">
+          //       About
+          //     </a>
+
+          //     <a href="#service" className="nav-content">
+          //       Service
+          //     </a>
+
+          //     <a href="#contact" className="nav-content">
+          //       Contact
+          //     </a>
+          //   </div>
+          // </>
         )}
       </div>
     </nav>

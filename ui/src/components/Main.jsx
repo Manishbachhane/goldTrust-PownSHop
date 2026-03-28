@@ -80,13 +80,13 @@ const Home = () => {
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
         {/* Title */}
-        <h1
-          ref={titleRef}
-          className="text-5xl md:text-7xl  font-extrabold text-yellow-400 tracking-widest drop-shadow-[0_0_20px_rgba(255,215,0,0.5)]"
-        >
-          Historic Holdings
-        </h1>
 
+        <div
+          class="text-7xl font-bold uppercase tracking-[0.3em] text-transparent bg-clip-text text-yellow-400 drop-shadow-[0_0_20px_rgba(255,215,0,0.5)] pb-4"
+          style={{ fontFamily: "Cinzel, serif" }}
+        >
+          HISTORICAl HOLDINGS
+        </div>
         <h2 className="text-white text-2xl md:text-3xl mt-2 tracking-[6px]">
           PAWN SHOP
         </h2>

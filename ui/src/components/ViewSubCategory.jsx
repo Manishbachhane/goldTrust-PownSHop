@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 function ViewSubCategory() {
   const params = useParams();
   const [scList, setSubCategoryList] = useState([]);
-
+ 
   useEffect(() => {
     axios
       .get(__subcategoryapiurl + "fetch", {

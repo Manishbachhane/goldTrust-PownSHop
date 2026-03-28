@@ -1,11 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
-import { NavLink ,useNavigate} from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { __userapiurl } from "../API_URL";
 
 function Register() {
   const navigate = useNavigate();
-  const [output, setOutput] = useState();
+
+  const [output, setOutput] = useState("");
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,7 +16,37 @@ function Register() {
   const [city, setCity] = useState("");
   const [gender, setGender] = useState("");
 
+  const [errors, setErrors] = useState({});
+
+  // ✅ Validation
+  const validate = () => {
+    let err = {};
+
+    if (!name.trim()) err.name = "Name required";
+
+    if (!email) err.email = "Email required";
+    else if (!/^\S+@\S+\.\S+$/.test(email)) err.email = "Invalid email";
+
+    if (!password) err.password = "Password required";
+    else if (password.length < 6) err.password = "Min 6 characters";
+
+    if (!mobile) err.mobile = "Mobile required";
+    else if (!/^[6-9]\d{9}$/.test(mobile)) err.mobile = "Invalid mobile";
+
+    if (!address) err.address = "Address required";
+
+    if (!city) err.city = "Select city";
+
+    if (!gender) err.gender = "Select gender";
+
+    setErrors(err);
+    return Object.keys(err).length === 0;
+  };
+
+  // 🚀 Submit
   const handleSubmit = () => {
+    if (!validate()) return;
+
     const userDetails = {
       name,
       email,
@@ -28,129 +60,104 @@ function Register() {
     axios
       .post(__userapiurl + "save", userDetails)
       .then(() => {
-        setOutput("User register successfully.... \n check your email for verification...");
-        setName("");
-        setEmail("");
-        setPassword("");
-        setMobile("");
-        setAddress("");
-        setCity("");
-        setGender("");
+        setOutput("✅ User registered successfully");
+        navigate("/login");
       })
       .catch(() => {
-        setOutput("User registration failed....");
+        setOutput("❌ Registration failed");
       });
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-gray-900 via-black to-gray-900 px-4 py-16">
-      <div className="w-full max-w-3xl bg-gray-800/70 backdrop-blur-lg border border-gray-700 rounded-3xl shadow-2xl p-10">
-        {/* Header */}
+    <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-gray-900 via-black to-gray-900 px-6 pt-10 text-white">
+      <div className="w-full max-w-3xl">
+        {/* Heading */}
         <div className="text-center mb-10">
-          <h2 className="text-4xl font-bold text-yellow-400 mt-4">
-            Create Account
-          </h2>
-          <p className="text-gray-100 mt-2">Register to get started</p>
+          <h2 className="text-4xl font-bold text-yellow-400">Create Account</h2>
+          <p className="text-gray-400 mt-2">Register to get started</p>
         </div>
 
         {/* Message */}
-        {output && (
-          <p className="text-center mb-6 text-green-400 font-medium">
-            {output}
-          </p>
-        )}
+        {output && <p className="text-center mb-6 text-green-400">{output}</p>}
 
-        <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Form */}
+        <form className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Name */}
           <div>
-            <label className="block text-gray-300 mb-2 font-medium">
-              Full Name
-            </label>
             <input
               type="text"
-              placeholder="Enter your name"
-              className="w-full p-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-yellow-400 outline-none transition"
+              placeholder="Full Name"
+              className="w-full bg-transparent border-0 border-b border-gray-600 py-2 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400 transition"
               onChange={e => setName(e.target.value)}
               value={name}
             />
+            <p className="text-red-400 text-sm mt-1">{errors.name}</p>
           </div>
 
           {/* Email */}
           <div>
-            <label className="block text-gray-300 mb-2 font-medium">
-              Email
-            </label>
             <input
               type="email"
-              placeholder="Enter your email"
-              className="w-full p-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-yellow-400 outline-none transition"
+              placeholder="Email"
+              className="w-full bg-transparent border-0 border-b border-gray-600 py-2 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400 transition"
               onChange={e => setEmail(e.target.value)}
               value={email}
             />
+            <p className="text-red-400 text-sm mt-1">{errors.email}</p>
           </div>
 
           {/* Password */}
           <div>
-            <label className="block text-gray-300 mb-2 font-medium">
-              Password
-            </label>
             <input
               type="password"
-              placeholder="Enter password"
-              className="w-full p-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-yellow-400 outline-none transition"
+              placeholder="Password"
+              className="w-full bg-transparent border-0 border-b border-gray-600 py-2 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400 transition"
               onChange={e => setPassword(e.target.value)}
               value={password}
             />
+            <p className="text-red-400 text-sm mt-1">{errors.password}</p>
           </div>
 
           {/* Mobile */}
           <div>
-            <label className="block text-gray-300 mb-2 font-medium">
-              Mobile
-            </label>
             <input
               type="text"
-              placeholder="Enter mobile number"
-              className="w-full p-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-yellow-400 outline-none transition"
+              placeholder="Mobile"
+              className="w-full bg-transparent border-0 border-b border-gray-600 py-2 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400 transition"
               onChange={e => setMobile(e.target.value)}
               value={mobile}
             />
+            <p className="text-red-400 text-sm mt-1">{errors.mobile}</p>
           </div>
 
           {/* Address */}
           <div className="md:col-span-2">
-            <label className="block text-gray-300 mb-2 font-medium">
-              Address
-            </label>
             <textarea
-              rows="3"
-              placeholder="Enter address"
-              className="w-full p-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-yellow-400 outline-none transition"
+              placeholder="Address"
+              className="w-full bg-transparent border-0 border-b border-gray-600 py-2 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400 transition resize-none"
               onChange={e => setAddress(e.target.value)}
               value={address}
-            ></textarea>
+            />
+            <p className="text-red-400 text-sm mt-1">{errors.address}</p>
           </div>
 
           {/* City */}
           <div>
-            <label className="block text-gray-300 mb-2 font-medium">City</label>
             <select
-              className="w-full p-3 bg-gray-900 border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-yellow-400 outline-none transition"
+              className="w-full bg-transparent border-0 border-b border-gray-600 py-2 text-white focus:outline-none focus:border-yellow-400"
               onChange={e => setCity(e.target.value)}
               value={city}
             >
-              <option value="">Select City</option>
-              <option>Indore</option>
-              <option>Bhopal</option>
-              <option>Ujjain</option>
+              <option className="text-black">Select City</option>
+              <option className="text-black">Indore</option>
+              <option className="text-black">Bhopal</option>
+              <option className="text-black">Ujjain</option>
             </select>
+            <p className="text-red-400 text-sm mt-1">{errors.city}</p>
           </div>
 
           {/* Gender */}
           <div>
-            <label className="block text-gray-300 mb-2 font-medium">
-              Gender
-            </label>
             <div className="flex gap-6 text-gray-300">
               <label className="flex items-center gap-2">
                 <input
@@ -172,14 +179,15 @@ function Register() {
                 Female
               </label>
             </div>
+            <p className="text-red-400 text-sm mt-1">{errors.gender}</p>
           </div>
 
           {/* Button */}
-          <div className="md:col-span-2 text-center pt-6">
+          <div className="md:col-span-2 pt-6">
             <button
               type="button"
               onClick={handleSubmit}
-              className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 rounded-2xl shadow-lg transition duration-300 hover:scale-105"
+              className="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-semibold py-3 rounded-xl transition duration-300 hover:scale-[1.02]"
             >
               Create Account
             </button>
@@ -189,9 +197,9 @@ function Register() {
         {/* Footer */}
         <div className="text-center mt-6 text-gray-400 text-sm">
           Already have an account?
-          <span className="text-yellow-400 cursor-pointer hover:underline ml-1">
-            <NavLink to="/login">Login</NavLink>
-          </span>
+          <NavLink to="/login" className="text-yellow-400 ml-1">
+            Login
+          </NavLink>
         </div>
       </div>
     </div>

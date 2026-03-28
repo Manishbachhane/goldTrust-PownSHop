@@ -98,7 +98,7 @@ const ServiceDetail = () => {
             transition={{ delay: idx * 0.1 }}
             className="bg-white/5 border border-white/10 p-5 rounded-2xl hover:bg-yellow-500 hover:text-black transition"
           >
-            <h3 className="font-semibold text-yellow-400 mb-1">
+            <h3 className="font-semibold text-yellow-400 ">
               {service.title}
             </h3>
             <p className="text-sm text-gray-400">{service.desc}</p>

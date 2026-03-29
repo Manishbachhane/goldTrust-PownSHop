@@ -78,7 +78,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen relative bg-gradient-to-br from-gray-950 via-black to-gray-900 text-white flex items-center justify-center px-6">
+    <div className="min-h-screen relative bg-gradient-to-br from-gray-900 via-black to-gray-900  text-white flex items-center justify-center px-6">
       {/* Content */}
       <div className="relative z-10 w-full max-w-5xl grid md:grid-cols-2 gap-10 items-center">
         {/* LEFT SIDE */}

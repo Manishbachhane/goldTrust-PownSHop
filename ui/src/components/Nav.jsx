@@ -97,14 +97,6 @@ function Nav() {
             </NavLink>
 
             <NavLink
-              to="/aiclient"
-              className={({ isActive }) =>
-                `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
-              }
-            >
-              AI Client
-            </NavLink>
-            <NavLink
               to="/addcategory"
               className={({ isActive }) =>
                 `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
@@ -155,14 +147,7 @@ function Nav() {
             >
               View Category
             </NavLink>
-            <NavLink
-              to="/aiclient"
-              className={({ isActive }) =>
-                `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
-              }
-            >
-              AI Client
-            </NavLink>
+
             <NavLink
               to="/charity"
               className={({ isActive }) =>
@@ -226,53 +211,25 @@ function Nav() {
                 Contact
               </a>
 
-              <a
-                href="/register"
+              <NavLink
+                to="/register"
                 className={({ isActive }) =>
                   `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
                 }
               >
                 Register
-              </a>
+              </NavLink>
 
-              <a
-                href="/login"
+              <NavLink
+                to="/login"
                 className={({ isActive }) =>
                   `nav-content hover:text-yellow-400 hover:font-bold ${isActive ? "text-yellow-400 font-bold border-b-2 border-yellow-400" : ""}`
                 }
               >
                 Login
-              </a>
+              </NavLink>
             </div>
           </>
-          // <>
-          //   <div className="space-x-6">
-          //     <a
-          //       href="#home"
-          //       className={({ isActive }) =>
-          //         `hover:text-yellow-400 hover:font-bold ${
-          //           isActive
-          //             ? "text-yellow-400 font-bold border-b-2 border-yellow-400"
-          //             : ""
-          //         }`
-          //       }
-          //     >
-          //       Home
-          //     </a>
-
-          //     <a href="#about" className="nav-content">
-          //       About
-          //     </a>
-
-          //     <a href="#service" className="nav-content">
-          //       Service
-          //     </a>
-
-          //     <a href="#contact" className="nav-content">
-          //       Contact
-          //     </a>
-          //   </div>
-          // </>
         )}
       </div>
     </nav>

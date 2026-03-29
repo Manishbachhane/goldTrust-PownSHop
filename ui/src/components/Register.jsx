@@ -28,7 +28,7 @@ function Register() {
     else if (!/^\S+@\S+\.\S+$/.test(email)) err.email = "Invalid email";
 
     if (!password) err.password = "Password required";
-    else if (password.length < 6) err.password = "Min 6 characters";
+    else if (password.length < 4) err.password = "Min 4 characters";
 
     if (!mobile) err.mobile = "Mobile required";
     else if (!/^[6-9]\d{9}$/.test(mobile)) err.mobile = "Invalid mobile";
@@ -61,7 +61,7 @@ function Register() {
       .post(__userapiurl + "save", userDetails)
       .then(() => {
         setOutput("✅ User registered successfully");
-        navigate("/login");
+        setTimeout(() => navigate("/login"), 2000);
       })
       .catch(() => {
         setOutput("❌ Registration failed");

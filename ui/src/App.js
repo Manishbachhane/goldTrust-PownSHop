@@ -26,6 +26,7 @@
   import AIClient from './components/AIClient';
   import Chart from './components/Admin/Chart'
   import VerifyItems from './components/Admin/VerifyItems';
+  import ChatBot from './components/ChatBoat';
   //==============Charity and Payment Components================= 
 import Charity from './components/payment/Charity';
 import Payment from './components/payment/Payment';
@@ -35,12 +36,10 @@ import Cancel from './components/payment/Cancel';
     return (
       <div>
         <Nav />
+          <ChatBot />
         <Routes>
           {/* ===============General Routes================= */}
           <Route path='' element={<Home />} ></Route>
-          {/* <Route path='/about' element={<About />} ></Route>
-          <Route path='/contact' element={<Contact />} ></Route>
-          <Route path='/service' element={<Service />} ></Route> */}
           <Route path='/register' element={<Register />} ></Route>
           <Route path='/viewcategory' element={<ViewCategory />} ></Route>
           <Route path='/viewsubcategory/:cnm' element={<ViewSubCategory />} ></Route> 

@@ -39,7 +39,7 @@ export const save = async (req, res) => {
 };
 
 export const fetch=async(req,res)=>{
-  // console.log(req.query);
+  console.log("hellow form fetch product");
   var condition_obj=req.query; 
   var ProductList=await ProductSchemaModel .find(condition_obj);
   if(ProductList.length!=0)
@@ -53,7 +53,7 @@ export const updateStatus = async (req, res) => {
   try {
     const { status } = req.body;
 
-    await ProductScModel.findByIdAndUpdate(req.params.id, { status });
+    await ProductSchemaModel.findByIdAndUpdate(req.params.id, { status });
 
     res.json({ success: true, message: "Status updated" });
   } catch (error) {

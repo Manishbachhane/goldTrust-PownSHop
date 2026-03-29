@@ -13,87 +13,80 @@ function Profile() {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center 
-    bg-gradient-to-b from-black via-gray-900 to-black p-6"
+      className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900
+ text-white px-6 md:px-20 py-36"
     >
-      <div
-        className=" w-full max-w-lg 
-     bg-white/5 backdrop-blur-lg 
-      border border-yellow-500/100 
-      rounded-2xl shadow-5xl shadow-gray-800 p-8"
-      >
-        {/* Header */}
-
-        <div className="flex items-center gap-5 mb-6">
-          <div
-            className="w-16 h-16 rounded-full 
-          bg-yellow-500 text-black 
-          flex items-center justify-center 
-          text-2xl font-bold"
-          >
-            {user.name.charAt(0).toUpperCase()}
+      {/* Top Section */}
+      <div className="flex items-center justify-between border-b border-gray-600 pb-6">
+        <div className="flex items-center gap-5">
+          <div className="w-20 h-20 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 text-black flex items-center justify-center text-3xl font-bold shadow-lg">
+            {user.name?.charAt(0).toUpperCase()}
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-yellow-400">{user.name}</h2>
-
-            <p className="text-gray-400 text-sm">{user.role.toUpperCase()}</p>
+            <h1 className="text-3xl font-bold tracking-wide">{user.name}</h1>
+            <p className="text-gray-400 text-sm uppercase">{user.role}</p>
           </div>
         </div>
 
-        {/* Divider */}
-
-        <div className="border-b border-gray-700 mb-5"></div>
-
-        {/* Details */}
-
-        <div className="space-y-4 text-sm">
-          <div className="detail-row flex justify-between border-b border-gray-700 pb-2">
-            <span className="text-gray-400">Email</span>
-            <span className="text-white">{user.email}</span>
-          </div>
-
-          <div className="detail-row flex justify-between border-b border-gray-700 pb-2">
-            <span className="text-gray-400">Phone</span>
-            <span className="text-white">{user.phone}</span>
-          </div>
-
-          <div className="detail-row flex justify-between border-b border-gray-700 pb-2">
-            <span className="text-gray-400">City</span>
-            <span className="text-white">{user.city}</span>
-          </div>
-
-          <div className="detail-row flex justify-between border-b border-gray-700 pb-2">
-            <span className="text-gray-400">Gender</span>
-            <span className="text-white">{user.gender}</span>
-          </div>
-
-          <div className="detail-row flex justify-between">
-            <span className="text-gray-400">Joined</span>
-            <span className="text-yellow-400">{user.joined}</span>
-          </div>
-        </div>
-
-        {/* Buttons */}
-
-        <div className="flex gap-4 mt-7">
+        <div className="flex gap-3">
           <NavLink
             to="/editprofile"
-            className="flex-1 pl-3 bg-yellow-500 text-black py-2 rounded-lg font-semibold hover:bg-yellow-600 transition"
+            className="px-5 py-2 bg-yellow-500 text-black rounded-full text-sm font-semibold hover:bg-yellow-400 transition"
           >
-            {" "}
-            Edit Profile
+            Edit
           </NavLink>
-          {/* </button> */}
 
           <NavLink
             to="/changepassword"
-            className="flex-1 pl-3 border border-yellow-500 text-yellow-400 py-2 rounded-lg hover:bg-yellow-500 hover:text-black transition"
+            className="px-5 py-2 border border-yellow-500 text-yellow-400 rounded-full text-sm hover:bg-yellow-500 hover:text-black transition"
           >
-            {" "}
-            Change Password
+            Password
           </NavLink>
-          {/* </button> */}
+        </div>
+      </div>
+
+      {/* Info Section */}
+      <div className="grid md:grid-cols-2 gap-10 mt-10">
+        <div className="space-y-6">
+          <div>
+            <p className="text-gray-500 text-xs uppercase font-semibold">
+              Email
+            </p>
+            <p className="text-lg border-b border-gray-600  p-3 pb-5 font-medium">
+              {user.email}
+            </p>
+          </div>
+
+          <div>
+            <p className="text-gray-500 text-xs uppercase">Phone</p>
+            <p className="text-lg border-b border-gray-600  p-3 pb-5 font-medium">
+              {user.phone}
+            </p>
+          </div>
+
+          <div>
+            <p className="text-gray-500 text-xs uppercase">City</p>
+            <p className="text-lg border-b border-gray-600  p-3 pb-5 font-medium">
+              {user.city}
+            </p>
+          </div>
+        </div>
+
+        <div className="space-y-6">
+          <div>
+            <p className="text-gray-500 text-xs uppercase">Gender</p>
+            <p className="text-lg capitalize border-b border-gray-600  p-3 pb-5 font-medium">
+              {user.gender}
+            </p>
+          </div>
+
+          <div>
+            <p className="text-gray-500 text-xs uppercase">Joined</p>
+            <p className="text-lg text-yellow-400 border-b border-gray-600  p-3 pb-5 font-medium">
+              {user.joined}
+            </p>
+          </div>
         </div>
       </div>
     </div>

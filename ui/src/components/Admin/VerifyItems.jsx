@@ -5,14 +5,23 @@ import { __productapiurl } from "../../API_URL";
 const VerifyItems = () => {
   const [products, setProducts] = useState([]);
   const [reviewInput, setReviewInput] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  const statusMap = {
+    0: { text: "Pending", bg: "bg-yellow-500" },
+    1: { text: "Approved", bg: "bg-green-500" },
+    2: { text: "Rejected", bg: "bg-red-500" },
+  };
 
   // FETCH
   const fetchProducts = async () => {
     try {
       const res = await axios.get(__productapiurl + "fetch");
-      setProducts(res.data.info);
+      setProducts(res.data.info || []);
+      setLoading(false);
     } catch (err) {
       console.error(err);
+      setLoading(false);
     }
   };
 
@@ -35,43 +44,67 @@ const VerifyItems = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-900 min-h-screen text-white">
-      <h1 className="text-3xl font-bold mb-6 text-yellow-400">
-        🏦 Pawn Shop Admin Panel
-      </h1>
+    <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white pt-28 px-6">
+      {/* HEADER */}
+      <div className="flex justify-between items-center mb-10">
+        <h1 className="text-4xl font-bold text-yellow-400">
+          Admin Product Verification
+        </h1>
+      </div>
 
+      {/* LOADING */}
+      {loading && (
+        <p className="text-center text-gray-400 animate-pulse">
+          Loading products...
+        </p>
+      )}
+
+      {/* TABLE */}
       <div className="overflow-x-auto">
-        <table className="w-full text-sm text-left bg-gray-800 rounded-xl overflow-hidden">
-          {/* HEADER */}
-          <thead className="bg-gray-700 text-yellow-300">
+        <table className="w-full border border-gray-700 text-sm">
+          {/* HEAD */}
+          <thead className="bg-gray-800 text-yellow-400 sticky top-0 z-10">
             <tr>
-              <th className="p-3">Title</th>
-              <th className="p-3">Category</th>
-              <th className="p-3">Price</th>
-              <th className="p-3">PDF</th>
-              <th className="p-3">Status</th>
-              <th className="p-3">Review</th>
-              <th className="p-3">Action</th>
+              <th className="p-3 border border-gray-700 text-center">#</th>
+              <th className="p-3 border border-gray-700 text-center">Title</th>
+              <th className="p-3 border border-gray-700 text-center">
+                Category
+              </th>
+              <th className="p-3 border border-gray-700 text-center">Price</th>
+              <th className="p-3 border border-gray-700 text-center">PDF</th>
+              <th className="p-3 border border-gray-700 text-center">Status</th>
+              <th className="p-3 border border-gray-700 text-center">Review</th>
+              <th className="p-3 border border-gray-700 text-center">Action</th>
             </tr>
           </thead>
 
           {/* BODY */}
           <tbody>
-            {products.map(p => (
-              <tr key={p._id} className="border-b border-gray-700">
-                {/* TITLE */}
-                <td className="p-3">{p.title}</td>
+            {products.map((p, index) => (
+              <tr
+                key={p._id}
+                className="hover:bg-gray-800 transition duration-200"
+              >
+                <td className="p-3 border border-gray-700 text-center">
+                  {index + 1}
+                </td>
 
-                {/* CATEGORY */}
-                <td className="p-3">{p.catnm}</td>
+                <td className="p-3 border border-gray-700 text-center font-semibold">
+                  {p.title}
+                </td>
 
-                {/* PRICE */}
-                <td className="p-3">₹{p.price}</td>
+                <td className="p-3 border border-gray-700 text-center">
+                  {p.catnm}
+                </td>
 
-                {/* PDF ACTIONS */}
-                <td className="p-3 flex gap-2">
+                <td className="p-3 border border-gray-700 text-center text-green-400 font-bold">
+                  ₹{p.price}
+                </td>
+
+                {/* PDF */}
+                <td className="p-3 border border-gray-700 text-center space-x-2">
                   <a
-                    href={`http://localhost:3000/assets/uploads/products/${p.filename}`}
+                    href={`http://localhost:3000/uploads/${p.filename}`}
                     target="_blank"
                     rel="noreferrer"
                     className="bg-blue-500 px-2 py-1 rounded text-xs"
@@ -80,35 +113,35 @@ const VerifyItems = () => {
                   </a>
 
                   <a
-                    href={`http://localhost:3000/assets/uploads/products/${p.filename}`}
+                    href={`http://localhost:3000/uploads/${p.filename}`}
                     download
-                    className="bg-green-500 px-2 py-1 rounded text-xs"
+                    className="bg-yellow-400 text-black px-2 py-1 rounded text-xs"
                   >
                     Download
                   </a>
                 </td>
 
                 {/* STATUS */}
-                <td className="p-3">
+                <td className="p-3 border border-gray-700 text-center">
                   <span
-                    className={`px-2 py-1 rounded text-xs ${
-                      p.status === 1 ? "bg-green-600" : "bg-red-600"
+                    className={`px-3 py-1 text-xs rounded-full ${
+                      statusMap[p.status]?.bg || "bg-gray-500"
                     }`}
                   >
-                    {p.status === 1 ? "Approved" : "Pending"}
+                    {statusMap[p.status]?.text}
                   </span>
 
-                  <div className="flex gap-1 mt-2">
+                  <div className="flex justify-center gap-2 mt-2">
                     <button
                       onClick={() => updateStatus(p._id, 1)}
-                      className="bg-green-700 px-2 py-1 text-xs rounded"
+                      className="bg-green-600 px-2 py-1 text-xs rounded"
                     >
                       ✔
                     </button>
 
                     <button
-                      onClick={() => updateStatus(p._id, 0)}
-                      className="bg-red-700 px-2 py-1 text-xs rounded"
+                      onClick={() => updateStatus(p._id, 2)}
+                      className="bg-red-600 px-2 py-1 text-xs rounded"
                     >
                       ✖
                     </button>
@@ -116,10 +149,10 @@ const VerifyItems = () => {
                 </td>
 
                 {/* REVIEW */}
-                <td className="p-3">
+                <td className="p-3 border border-gray-700 text-center">
                   <textarea
-                    placeholder="Write review"
                     className="w-full p-1 text-xs bg-gray-700 rounded"
+                    placeholder="Write review..."
                     value={reviewInput[p._id] || ""}
                     onChange={e =>
                       setReviewInput({
@@ -137,10 +170,10 @@ const VerifyItems = () => {
                 </td>
 
                 {/* ACTION */}
-                <td className="p-3">
+                <td className="p-3 border border-gray-700 text-center">
                   <button
                     onClick={() => addReview(p._id)}
-                    className="bg-yellow-500 text-black px-2 py-1 rounded text-xs"
+                    className="bg-yellow-500 text-black px-3 py-1 rounded text-xs"
                   >
                     Save
                   </button>

@@ -67,7 +67,7 @@ export default function ShowProducts() {
             <tr>
               <th className="p-3 border border-gray-700 text-center">#</th>
               <th className="p-3 border border-gray-700 text-center">Title</th>
-              <th className="p-3 border  border-gray-700 text-center">
+              <th className="p-3  px-1   border  border-gray-700 text-center">
                 Description
               </th>
               <th className="p-3 border border-gray-700 text-center">Price</th>
@@ -120,7 +120,7 @@ export default function ShowProducts() {
                 {/* PDF ACTION */}
                 <td className="p-3 border border-gray-700 text-center space-x-2">
                   <a
-                    href={`http://localhost:3000/uploads/${product.filename}`}
+                    href={`http://localhost:3000/assets/uploads/products/${product.filename}`}
                     target="_blank"
                     rel="noreferrer"
                     className="bg-blue-500 px-2 py-1 rounded text-xs"
@@ -129,9 +129,9 @@ export default function ShowProducts() {
                   </a>
 
                   <a
-                    href={`http://localhost:3000/uploads/${product.filename}`}
+                    href={`http://localhost:3000/assets/uploads/products/${product.filename}`}
                     download
-                    className="bg-yellow-400 text-black px-2 py-1 rounded text-xs"
+                    className="bg-yellow-400 text-black px-2 py-1 rounded text-xs hover:scale-110 transition duration-200"
                   >
                     Download
                   </a>

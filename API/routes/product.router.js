@@ -8,7 +8,8 @@ router.post("/save",ProductController.save);
 router.get("/fetch",ProductController.fetch);
 
 
-// ✅ NEW ROUTE (approve/reject ke liye)
 router.patch("/update-status/:id", ProductController.updateStatus);
-
+router.put("/status/:id",ProductController.updateStatus);
+router.put("/review/:id",ProductController.addAdminReview);
+router.delete("/delete/:id",ProductController.deleteProduct);
 export default router;

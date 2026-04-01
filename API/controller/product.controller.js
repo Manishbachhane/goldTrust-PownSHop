@@ -41,7 +41,7 @@ export const save = async (req, res) => {
 export const fetch=async(req,res)=>{
   console.log("hellow form fetch product");
   var condition_obj=req.query; 
-  var ProductList=await ProductSchemaModel .find(condition_obj);
+  var ProductList=await ProductSchemaModel.find(condition_obj);
   if(ProductList.length!=0)
     res.status(200).json({"status":true,"info":ProductList});
   else
@@ -60,4 +60,33 @@ export const updateStatus = async (req, res) => {
     console.error(error);
     res.status(500).json({ success: false });
   }
+};
+
+export const addAdminReview = async (req, res) => {
+  try {
+    const { adminReview } = req.body;
+
+    await ProductSchemaModel.findByIdAndUpdate(
+      req.params.id,
+      { adminReview }
+    );
+
+    res.status(200).json({
+      status: true,
+      msg: "Admin review added successfully"
+    });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      status: false,
+      msg: "Error adding review"
+    });
+  }
+};
+
+
+export const deleteProduct = async (req,res)=>{
+  await Product.findByIdAndDelete(req.params.id);
+  res.json({status:true});
 };

@@ -1,145 +1,18 @@
-// import React, { useState } from "react";
-
-// const VerifyItems = () => {
-
-//   const [products, setProducts] = useState([
-//     {
-//       _id: "1",
-//       title: "Gold Ring",
-//       price: 15000,
-//       userName: "Manish",
-//       image: "https://via.placeholder.com/300",
-//       status: 0,
-//     },
-//     {
-//       _id: "2",
-//       title: "iPhone 13",
-//       price: 40000,
-//       userName: "Rahul",
-//       image: "https://via.placeholder.com/300",
-//       status: 1,
-//     },
-//     {
-//       _id: "3",
-//       title: "Bike",
-//       price: 60000,
-//       userName: "Amit",
-//       image: "https://via.placeholder.com/300",
-//       status: 2,
-//     },
-//   ]);
-
-//   const [filter, setFilter] = useState("all");
-
-//   //  Status Update (frontend only)
-//   const updateStatus = (id, status) => {
-//     setProducts(prev => prev.map(p => (p._id === id ? { ...p, status } : p)));
-//   };
-
-//   //  Filter
-//   const filteredProducts = products.filter(p => {
-//     if (filter === "all") return true;
-//     if (filter === "pending") return p.status === 0;
-//     if (filter === "approved") return p.status === 1;
-//     if (filter === "rejected") return p.status === 2;
-//   });
-
-//   //  Status UI
-//   const getStatus = status => {
-//     if (status === 0) return { text: "Pending", color: "bg-yellow-400" };
-//     if (status === 1) return { text: "Approved", color: "bg-green-500" };
-//     return { text: "Rejected", color: "bg-red-500" };
-//   };
-
-//   return (
-//     <div className="p-6 bg-gray-100 min-h-screen">
-//       {/*  Heading */}
-//       <h1 className="text-2xl font-bold mb-4">Product Verification</h1>
-
-//       {/* Filters */}
-//       <div className="flex gap-3 mb-6">
-//         {["all", "pending", "approved", "rejected"].map(f => (
-//           <button
-//             key={f}
-//             onClick={() => setFilter(f)}
-//             className={`px-4 py-2 rounded-xl ${
-//               filter === f ? "bg-black text-white" : "bg-white"
-//             }`}
-//           >
-//             {f}
-//           </button>
-//         ))}
-//       </div>
-
-//       {/*  Grid */}
-//       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-//         {filteredProducts.map(product => {
-//           const status = getStatus(product.status);
-
-//           return (
-//             <div
-//               key={product._id}
-//               className="bg-white rounded-2xl shadow hover:shadow-lg transition p-4"
-//             >
-//               {/*  Image */}
-//               <img
-//                 src={product.image}
-//                 alt=""
-//                 className="h-40 w-full object-cover rounded-xl"
-//               />
-
-//               {/*  Info */}
-//               <h2 className="font-bold mt-3">{product.title}</h2>
-//               <p className="text-gray-500">₹{product.price}</p>
-//               <p className="text-sm text-gray-400">By: {product.userName}</p>
-
-//               {/*  Status */}
-//               <div
-//                 className={`mt-2 text-white px-2 py-1 rounded w-fit ${status.color}`}
-//               >
-//                 {status.text}
-//               </div>
-
-//               {/*  Buttons */}
-//               <div className="flex gap-2 mt-4">
-//                 <button
-//                   onClick={() => updateStatus(product._id, 1)}
-//                   className="flex-1 bg-green-500 hover:bg-green-600 text-white py-1 rounded"
-//                 >
-//                   Approve
-//                 </button>
-
-//                 <button
-//                   onClick={() => updateStatus(product._id, 2)}
-//                   className="flex-1 bg-red-500 hover:bg-red-600 text-white py-1 rounded"
-//                 >
-//                   Reject
-//                 </button>
-//               </div>
-//             </div>
-//           );
-//         })}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default VerifyItems;
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { __productapiurl } from "../../API_URL";
 
 const VerifyItems = () => {
   const [products, setProducts] = useState([]);
+  const [reviewInput, setReviewInput] = useState({});
 
-  // ✅ FETCH DATA
+  // FETCH
   const fetchProducts = async () => {
     try {
       const res = await axios.get(__productapiurl + "fetch");
       setProducts(res.data.info);
-      console.log(res.data.info);
     } catch (err) {
-      console.error("Fetch error:", err);
+      console.error(err);
     }
   };
 
@@ -147,25 +20,135 @@ const VerifyItems = () => {
     fetchProducts();
   }, []);
 
+  // STATUS UPDATE
+  const updateStatus = async (id, status) => {
+    await axios.put(__productapiurl + `status/${id}`, { status });
+    fetchProducts();
+  };
+
+  // REVIEW UPDATE
+  const addReview = async id => {
+    await axios.put(__productapiurl + `review/${id}`, {
+      adminReview: reviewInput[id] || "",
+    });
+    fetchProducts();
+  };
+
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
-      <h1 className="text-2xl font-bold mb-4">All Products</h1>
+    <div className="p-6 bg-gray-900 min-h-screen text-white">
+      <h1 className="text-3xl font-bold mb-6 text-yellow-400">
+        🏦 Pawn Shop Admin Panel
+      </h1>
 
-      {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {products.map(product => (
-          <div key={product._id} className="bg-white rounded-2xl shadow p-4">
-            <img
-              src={product.image}
-              alt=""
-              className="h-40 w-full object-cover rounded-xl"
-            />
+      <div className="overflow-x-auto">
+        <table className="w-full text-sm text-left bg-gray-800 rounded-xl overflow-hidden">
+          {/* HEADER */}
+          <thead className="bg-gray-700 text-yellow-300">
+            <tr>
+              <th className="p-3">Title</th>
+              <th className="p-3">Category</th>
+              <th className="p-3">Price</th>
+              <th className="p-3">PDF</th>
+              <th className="p-3">Status</th>
+              <th className="p-3">Review</th>
+              <th className="p-3">Action</th>
+            </tr>
+          </thead>
 
-            <h2 className="font-bold mt-3">{product.title}</h2>
-            <p className="text-gray-500">₹{product.price}</p>
-            <p className="text-sm text-gray-400">By: {product.userName}</p>
-          </div>
-        ))}
+          {/* BODY */}
+          <tbody>
+            {products.map(p => (
+              <tr key={p._id} className="border-b border-gray-700">
+                {/* TITLE */}
+                <td className="p-3">{p.title}</td>
+
+                {/* CATEGORY */}
+                <td className="p-3">{p.catnm}</td>
+
+                {/* PRICE */}
+                <td className="p-3">₹{p.price}</td>
+
+                {/* PDF ACTIONS */}
+                <td className="p-3 flex gap-2">
+                  <a
+                    href={`http://localhost:3000/assets/uploads/products/${p.filename}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="bg-blue-500 px-2 py-1 rounded text-xs"
+                  >
+                    View
+                  </a>
+
+                  <a
+                    href={`http://localhost:3000/assets/uploads/products/${p.filename}`}
+                    download
+                    className="bg-green-500 px-2 py-1 rounded text-xs"
+                  >
+                    Download
+                  </a>
+                </td>
+
+                {/* STATUS */}
+                <td className="p-3">
+                  <span
+                    className={`px-2 py-1 rounded text-xs ${
+                      p.status === 1 ? "bg-green-600" : "bg-red-600"
+                    }`}
+                  >
+                    {p.status === 1 ? "Approved" : "Pending"}
+                  </span>
+
+                  <div className="flex gap-1 mt-2">
+                    <button
+                      onClick={() => updateStatus(p._id, 1)}
+                      className="bg-green-700 px-2 py-1 text-xs rounded"
+                    >
+                      ✔
+                    </button>
+
+                    <button
+                      onClick={() => updateStatus(p._id, 0)}
+                      className="bg-red-700 px-2 py-1 text-xs rounded"
+                    >
+                      ✖
+                    </button>
+                  </div>
+                </td>
+
+                {/* REVIEW */}
+                <td className="p-3">
+                  <textarea
+                    placeholder="Write review"
+                    className="w-full p-1 text-xs bg-gray-700 rounded"
+                    value={reviewInput[p._id] || ""}
+                    onChange={e =>
+                      setReviewInput({
+                        ...reviewInput,
+                        [p._id]: e.target.value,
+                      })
+                    }
+                  />
+
+                  {p.adminReview && (
+                    <p className="text-yellow-400 text-xs mt-1">
+                      {p.adminReview}
+                    </p>
+                  )}
+                </td>
+
+                {/* ACTION */}
+                <td className="p-3">
+                  <button
+                    onClick={() => addReview(p._id)}
+                    className="bg-yellow-500 text-black px-2 py-1 rounded text-xs"
+                  >
+                    Save
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );

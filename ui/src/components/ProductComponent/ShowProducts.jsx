@@ -63,11 +63,11 @@ export default function ShowProducts() {
       <div className="overflow-x-auto">
         <table className="w-full border border-gray-700 text-sm">
           {/* Head */}
-          <thead className="bg-gray-800 text-yellow-400 sticky top-0 z-10">
+          <thead className="bg-gray-800 text-xl text-yellow-400 sticky top-0 z-10">
             <tr>
               <th className="p-3 border border-gray-700 text-center">#</th>
               <th className="p-3 border border-gray-700 text-center">Title</th>
-              <th className="p-3 border border-gray-700 text-center">
+              <th className="p-3 border  border-gray-700 text-center">
                 Description
               </th>
               <th className="p-3 border border-gray-700 text-center">Price</th>
@@ -76,6 +76,9 @@ export default function ShowProducts() {
               </th>
               <th className="p-3 border border-gray-700 w-48 text-center">
                 Download Product Details
+              </th>
+              <th className="p-3 border border-gray-700 w-48 text-center">
+                Admin Review
               </th>
             </tr>
           </thead>
@@ -103,22 +106,40 @@ export default function ShowProducts() {
                   ₹{product.price || "---"}
                 </td>
 
-                <td className="p-3  border border-gray-700">
-                  <div className="flex items-center justify-center gap-3">
-                    <span
-                      className={`px-3 py-1 text-xs rounded-full ${
-                        statusMap[product.status]?.bg || "bg-gray-500"
-                      }`}
-                    >
-                      {statusMap[product.status]?.text || "---"}
-                    </span>
-                  </div>
+                {/* STATUS */}
+                <td className="p-3 border border-gray-700 text-center">
+                  <span
+                    className={`px-3 py-1 text-xs rounded-full ${
+                      statusMap[product.status]?.bg || "bg-gray-500"
+                    }`}
+                  >
+                    {statusMap[product.status]?.text || "---"}
+                  </span>
                 </td>
-                <td className="p-3 mx-0 border border-gray-700 text-center">
-                  <button className="bg-yellow-400 text-black px-3 py-1 rounded-md font-semibold hover:bg-yellow-500 transition text-sm">
+
+                {/* PDF ACTION */}
+                <td className="p-3 border border-gray-700 text-center space-x-2">
+                  <a
+                    href={`http://localhost:3000/uploads/${product.filename}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="bg-blue-500 px-2 py-1 rounded text-xs"
+                  >
+                    View
+                  </a>
+
+                  <a
+                    href={`http://localhost:3000/uploads/${product.filename}`}
+                    download
+                    className="bg-yellow-400 text-black px-2 py-1 rounded text-xs"
+                  >
                     Download
-                  </button>
-                  {/* <DownloadButton /> */}
+                  </a>
+                </td>
+
+                {/* ADMIN REVIEW */}
+                <td className="p-3 border border-gray-700 text-center text-yellow-400 text-xs max-w-[200px] break-words">
+                  {product.adminReview ? product.adminReview : "No review yet"}
                 </td>
               </tr>
             ))}

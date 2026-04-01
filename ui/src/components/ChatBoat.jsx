@@ -11,7 +11,6 @@ const ChatBot = () => {
           <AIClient />
         </div>
       )}
-
       <div
         onClick={() => setOpen(!open)}
         className="flex items-center justify-center w-14 h-14 

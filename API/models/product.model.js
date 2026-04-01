@@ -1,4 +1,5 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
+
 
 const productSchema = new mongoose.Schema({
 
@@ -46,9 +47,13 @@ const productSchema = new mongoose.Schema({
     default:0
   },
 
+  adminReview:{         
+    type:String,
+    default:""
+  },
+
   info:String,
 });
-
 const ProductSchemaModel = mongoose.model("Product",productSchema);
 
 export default ProductSchemaModel;

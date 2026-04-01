@@ -2,9 +2,6 @@
   import Nav from './components/Nav';
   import Footer from './components/Footer';
   import Home from './components/Home';
-  import About from './components/About';
-  import Contact from './components/Contact';
-  import Service from './components/Service';
   import Register from './components/Register';
   import Login from './components/Login';
   import Logout from './components/Logout';
@@ -67,10 +64,10 @@ import Cancel from './components/payment/Cancel';
           <Route path='/addsubcategory' element={<AddSubCategory />} ></Route>
           <Route path='/manageusers' element={   <Manageusers/>} ></Route>
       {/*===================Charity and Payment Routes================= */}
-              <Route path="/charity" element={<Charity />} ></Route>
-              <Route path="/payment/:uid/:amt/" element={<Payment />} ></Route>
-              <Route path="/success" element={<Success />} ></Route>
-              <Route path="/cancel" element={<Cancel />} ></Route>
+          <Route path="/charity" element={<Charity />} ></Route>
+          <Route path="/payment/:uid/:amt/" element={<Payment />} ></Route>
+          <Route path="/success" element={<Success />} ></Route>
+          <Route path="/cancel" element={<Cancel />} ></Route>
         </Routes>
         <Footer />
     

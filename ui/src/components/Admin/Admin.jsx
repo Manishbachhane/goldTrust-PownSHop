@@ -33,15 +33,15 @@ function AdminHome() {
 
         <div className="bg-white/5 backdrop-blur-lg border border-gray-700 rounded-2xl p-6 shadow-lg hover:scale-105 transition">
           <h2 className="text-gray-400">Pending Items</h2>
-          <p className="text-3xl font-bold text-yellow-400 mt-2">15</p>
+          <p className="text-3xl font-bold text-yellow-400 mt-2">2</p>
         </div>
         <div className="bg-white/5 backdrop-blur-lg border border-gray-700 rounded-2xl p-6 shadow-lg hover:scale-105 transition">
           <h2 className="text-gray-400">Approved Items</h2>
-          <p className="text-3xl font-bold text-yellow-400 mt-2">78</p>
+          <p className="text-3xl font-bold text-yellow-400 mt-2">3</p>
         </div>
         <div className="bg-white/5 backdrop-blur-lg border border-gray-700 rounded-2xl p-6 shadow-lg hover:scale-105 transition">
           <h2 className="text-gray-400">Rejected Items</h2>
-          <p className="text-3xl font-bold text-red-400 mt-2">7</p>
+          <p className="text-3xl font-bold text-red-400 mt-2">3</p>
         </div>
       </div>
 
@@ -80,7 +80,7 @@ function AdminHome() {
         </div>
 
         {/* Reports*/}
-        <div className="bg-white/5 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 shadow-lg hover:scale-105 transition">
+        {/* <div className="bg-white/5 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 shadow-lg hover:scale-105 transition">
           <h2 className="text-2xl font-semibold text-yellow-400 mb-4">
             Reports & Analytics
           </h2>
@@ -93,7 +93,7 @@ function AdminHome() {
           >
             View Reports
           </NavLink>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -104,7 +104,7 @@ const VerifyItems = () => {
                 {/* PDF */}
                 <td className="p-3 border border-gray-700 text-center space-x-2">
                   <a
-                    href={`http://localhost:3000/uploads/${p.filename}`}
+                    href={`http://localhost:3000/assets/uploads/products/${p.filename}`}
                     target="_blank"
                     rel="noreferrer"
                     className="bg-blue-500 px-2 py-1 rounded text-xs"
@@ -113,7 +113,7 @@ const VerifyItems = () => {
                   </a>
 
                   <a
-                    href={`http://localhost:3000/uploads/${p.filename}`}
+                    href={`http://localhost:3000/assets/uploads/products/${p.filename}`}
                     download
                     className="bg-yellow-400 text-black px-2 py-1 rounded text-xs"
                   >

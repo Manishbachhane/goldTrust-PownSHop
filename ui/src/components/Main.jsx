@@ -103,7 +103,7 @@ const Home = () => {
         {/* Buttons */}
         <div ref={btnRef} className="mt-10 flex gap-6">
           <button className="group relative px-8 py-3 bg-yellow-500 text-black font-semibold rounded-lg overflow-hidden">
-            <span className="relative z-10">Get Loan</span>
+            <span className="relative z-10">Get Started</span>
             <span className="absolute inset-0 bg-yellow-300 scale-x-0 group-hover:scale-x-100 origin-left transition duration-500"></span>
           </button>
 

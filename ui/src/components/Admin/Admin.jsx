@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-import { __userapiurl ,__productapiurl} from "../../API_URL";
+import { __userapiurl, __productapiurl } from "../../API_URL";
 
 function AdminHome() {
   const [totalUsers, setTotalUsers] = useState(0);
   const [pendingItems, setPendingItems] = useState(0);
   const [approvedItems, setApprovedItems] = useState(0);
-
+  const [rejectedItems, setRejectedItems] = useState(0);
   const fetchPendingItems = () => {
-   axios
+    axios
       .get(__productapiurl + "pendingitems")
       .then(res => {
         setPendingItems(res.data.info.length);
@@ -41,10 +41,22 @@ function AdminHome() {
       });
   };
 
+  const fetchRejectedItems = () => {
+    axios
+      .get(__productapiurl + "rejecteditems")
+      .then(res => {
+        setRejectedItems(res.data.info.length);
+      })
+      .catch(err => {
+        console.error("Error fetching rejected items from ui:", err);
+      });
+  };
+
   useEffect(() => {
     fetchPendingItems();
     fetchTotalUsers();
     fetchApprovedItems();
+    fetchRejectedItems();
   }, []);
 
   return (
@@ -61,25 +73,27 @@ function AdminHome() {
         <div className="bg-white/5 backdrop-blur-lg border border-gray-700 rounded-2xl p-6 shadow-lg hover:scale-105 transition">
           <h2 className="text-gray-400">Total Users</h2>
           <p className="text-3xl font-bold text-yellow-400 mt-2">
-            {totalUsers}
+            {totalUsers ? totalUsers : "no users"}
           </p>
         </div>
 
         <div className="bg-white/5 backdrop-blur-lg border border-gray-700 rounded-2xl p-6 shadow-lg hover:scale-105 transition">
           <h2 className="text-gray-400">Pending Items</h2>
           <p className="text-3xl font-bold text-yellow-400 mt-2">
-            {pendingItems ? pendingItems : "no pending items  "}
+            {pendingItems ? pendingItems : "no pending"}
           </p>
         </div>
         <div className="bg-white/5 backdrop-blur-lg border border-gray-700 rounded-2xl p-6 shadow-lg hover:scale-105 transition">
           <h2 className="text-gray-400">Approved Items</h2>
           <p className="text-3xl font-bold text-yellow-400 mt-2">
-            {approvedItems}
+            {approvedItems ? approvedItems : "no approved"}
           </p>
         </div>
         <div className="bg-white/5 backdrop-blur-lg border border-gray-700 rounded-2xl p-6 shadow-lg hover:scale-105 transition">
           <h2 className="text-gray-400">Rejected Items</h2>
-          <p className="text-3xl font-bold text-red-400 mt-2">3</p>
+          <p className="text-3xl font-bold text-red-400 mt-2">
+            {rejectedItems ? rejectedItems : "no rejected"}
+          </p>
         </div>
       </div>
 
@@ -117,21 +131,7 @@ function AdminHome() {
           </NavLink>
         </div>
 
-        {/* Reports*/}
-        {/* <div className="bg-white/5 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 shadow-lg hover:scale-105 transition">
-          <h2 className="text-2xl font-semibold text-yellow-400 mb-4">
-            Reports & Analytics
-          </h2>
-          <p className="text-gray-400 mb-6">
-            View system reports and transaction insights.
-          </p>
-          <NavLink
-            to="/chart"
-            className="bg-yellow-400 text-black px-6 py-2 rounded-lg font-semibold hover:bg-yellow-500 transition"
-          >
-            View Reports
-          </NavLink>
-        </div> */}
+       
       </div>
     </div>
   );

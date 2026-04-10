@@ -21,7 +21,7 @@
   import AddProduct from './components/ProductComponent/AddProduct';
   import ShowProducts from './components/ProductComponent/ShowProducts';
   import AIClient from './components/AIClient';
-  import Chart from './components/Admin/Chart'
+
   import VerifyItems from './components/Admin/VerifyItems';
   import ChatBot from './components/ChatBoat';
   //==============Charity and Payment Components================= 
@@ -56,7 +56,7 @@ import Cancel from './components/payment/Cancel';
           <Route path='/showproducts' element={<ShowProducts />} ></Route>
           {/* ===============AI Client Routes================= */}
           <Route path='/aiclient' element={<AIClient />} ></Route> 
-          <Route path='/chart' element={<Chart />} ></Route>
+        
           {/* ===============Admin ================= */}
           <Route path='/admin' element={<Admin />} ></Route>
           <Route path='/verifyitems' element={<VerifyItems />} ></Route>

@@ -113,3 +113,15 @@ export const fetchApproved = async (req, res) => {
     res.status(500).json({ status: false });
   }
 };
+
+export const fetchRejected=async(req,res)=>{
+  try{
+    const rejectedProducts =await ProductSchemaModel.find({status:2});
+    res.status(200).json({status:true,info:rejectedProducts});
+  }catch(err){
+    console.log(err,"error fetching rejected products");
+    res.status(500).json({status:false});
+  }
+};
+
+

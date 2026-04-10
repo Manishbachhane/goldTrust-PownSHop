@@ -39,7 +39,6 @@ export const save = async (req, res) => {
 };
 
 export const fetch=async(req,res)=>{
-  console.log("hellow form fetch product");
   var condition_obj=req.query; 
   var ProductList=await ProductSchemaModel.find(condition_obj);
   if(ProductList.length!=0)
@@ -89,4 +88,15 @@ export const addAdminReview = async (req, res) => {
 export const deleteProduct = async (req,res)=>{
   await Product.findByIdAndDelete(req.params.id);
   res.json({status:true});
+};
+
+export const fetchPending = async (req, res) => {
+  try { 
+    const pendingProducts = await ProductSchemaModel.find({ status: 0 });
+    console.log(pendingProducts);
+    res.status(200).json({ status: true, info: pendingProducts });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ status: false });
+  }
 };

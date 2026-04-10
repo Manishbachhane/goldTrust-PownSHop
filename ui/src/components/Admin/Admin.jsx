@@ -5,12 +5,36 @@ import { __userapiurl } from "../../API_URL";
 
 function AdminHome() {
   const [totalUsers, setTotalUsers] = useState(0);
+  const [pendingItems, setPendingItems] = useState(0);
+
+  const fetchPendingItems = () => {
+    console.log("Fetching pending items from API...");
+
+    axios
+      .get(__userapiurl + "pending")
+      .then(res => {
+        setPendingItems(res.data.info.length);
+      })
+      .catch(err => {
+        console.error("Error fetching pending items:", err);
+      });
+  };
+
+  const fetchTotalUsers = () => {
+    console.log("Fetching total users from API...");
+    axios
+      .get(__userapiurl + "fetch")
+      .then(res => {
+        setTotalUsers(res.data.info.length);
+      })
+      .catch(err => {
+        console.error("Error fetching total users:", err);
+      });
+  };
 
   useEffect(() => {
-    console.log("Fetching total users from API...");
-    axios.get(__userapiurl + "count").then(res => {
-      setTotalUsers(res.data.totalUsers);
-    });
+    fetchPendingItems();
+    fetchTotalUsers();
   }, []);
 
   return (
@@ -33,7 +57,9 @@ function AdminHome() {
 
         <div className="bg-white/5 backdrop-blur-lg border border-gray-700 rounded-2xl p-6 shadow-lg hover:scale-105 transition">
           <h2 className="text-gray-400">Pending Items</h2>
-          <p className="text-3xl font-bold text-yellow-400 mt-2">2</p>
+          <p className="text-3xl font-bold text-yellow-400 mt-2">
+            {pendingItems}{" "}
+          </p>
         </div>
         <div className="bg-white/5 backdrop-blur-lg border border-gray-700 rounded-2xl p-6 shadow-lg hover:scale-105 transition">
           <h2 className="text-gray-400">Approved Items</h2>

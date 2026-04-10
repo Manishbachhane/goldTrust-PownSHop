@@ -138,7 +138,12 @@ const VerifyItems = () => {
                     >
                       ✔
                     </button>
-
+                    <button
+                      onClick={() => updateStatus(p._id, 0)}
+                      className="bg-yellow-500 px-2 py-1 text-xs rounded"
+                    >
+                      ?
+                    </button>
                     <button
                       onClick={() => updateStatus(p._id, 2)}
                       className="bg-red-600 px-2 py-1 text-xs rounded"

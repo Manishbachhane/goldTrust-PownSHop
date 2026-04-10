@@ -100,3 +100,16 @@ export const fetchPending = async (req, res) => {
     res.status(500).json({ status: false });
   }
 };
+
+
+export const fetchApproved = async (req, res) => {
+
+  try { 
+    const approvedProducts = await ProductSchemaModel.find({ status: 1 });
+    console.log(approvedProducts,"no  approverd products");
+    res.status(200).json({ status: true, info: approvedProducts });
+  } catch (err) {
+    console.log(err,"error fetching approved products");
+    res.status(500).json({ status: false });
+  }
+};

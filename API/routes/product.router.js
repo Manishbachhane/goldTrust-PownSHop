@@ -6,7 +6,9 @@ const router=express.Router();
 router.post("/save",ProductController.save);
 
 router.get("/fetch",ProductController.fetch);
-router.get("pending",ProductController.fetchPending);
+router.get("/pendingitems",ProductController.fetchPending);
+router.get("/approveditems",ProductController.fetchApproved);
+
 
 router.patch("/update-status/:id", ProductController.updateStatus);
 router.put("/status/:id",ProductController.updateStatus);

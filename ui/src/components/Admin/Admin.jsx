@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-import { __userapiurl } from "../../API_URL";
+import { __userapiurl ,__productapiurl} from "../../API_URL";
 
 function AdminHome() {
   const [totalUsers, setTotalUsers] = useState(0);
   const [pendingItems, setPendingItems] = useState(0);
+  const [approvedItems, setApprovedItems] = useState(0);
 
   const fetchPendingItems = () => {
-    console.log("Fetching pending items from API...");
-
-    axios
-      .get(__userapiurl + "pending")
+   axios
+      .get(__productapiurl + "pendingitems")
       .then(res => {
         setPendingItems(res.data.info.length);
       })
@@ -21,7 +20,6 @@ function AdminHome() {
   };
 
   const fetchTotalUsers = () => {
-    console.log("Fetching total users from API...");
     axios
       .get(__userapiurl + "fetch")
       .then(res => {
@@ -32,9 +30,21 @@ function AdminHome() {
       });
   };
 
+  const fetchApprovedItems = () => {
+    axios
+      .get(__productapiurl + "approveditems")
+      .then(res => {
+        setApprovedItems(res.data.info.length);
+      })
+      .catch(err => {
+        console.error("Error fetching approved items from ui:", err);
+      });
+  };
+
   useEffect(() => {
     fetchPendingItems();
     fetchTotalUsers();
+    fetchApprovedItems();
   }, []);
 
   return (
@@ -58,12 +68,14 @@ function AdminHome() {
         <div className="bg-white/5 backdrop-blur-lg border border-gray-700 rounded-2xl p-6 shadow-lg hover:scale-105 transition">
           <h2 className="text-gray-400">Pending Items</h2>
           <p className="text-3xl font-bold text-yellow-400 mt-2">
-            {pendingItems}{" "}
+            {pendingItems ? pendingItems : "no pending items  "}
           </p>
         </div>
         <div className="bg-white/5 backdrop-blur-lg border border-gray-700 rounded-2xl p-6 shadow-lg hover:scale-105 transition">
           <h2 className="text-gray-400">Approved Items</h2>
-          <p className="text-3xl font-bold text-yellow-400 mt-2">3</p>
+          <p className="text-3xl font-bold text-yellow-400 mt-2">
+            {approvedItems}
+          </p>
         </div>
         <div className="bg-white/5 backdrop-blur-lg border border-gray-700 rounded-2xl p-6 shadow-lg hover:scale-105 transition">
           <h2 className="text-gray-400">Rejected Items</h2>
